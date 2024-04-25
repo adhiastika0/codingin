@@ -11,7 +11,7 @@ export default async function Home() {
       {users.map((user) => (
         <div key={user.id}>
           {/* Access user properties here, e.g., user.name, user.email */}
-          <p>Name: {user.health}</p>
+          <p>Name: {user.username}</p>
           <p>Email: {user.email}</p>
           {/* Add more user details as needed */}
         </div>
