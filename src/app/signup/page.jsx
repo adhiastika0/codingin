@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth, db } from '@/firebase/clientApp';
-import Button from '@/components/button';
+import CustomButton from '@/components/button';
 import { addDoc, collection } from 'firebase/firestore';
 
 async function setUser(username, email) {
@@ -106,9 +106,9 @@ export default function Signup() {
             />
           </div>
 
-          <Button backgroundColor={'bg-biru-gradient'} onClick={handleSignUp}>
+          <CustomButton backgroundColor={'biru-gradient'} shadowColor={'bayangan_biru'} onClick={handleSignUp}>
             Buat Akun
-          </Button>
+          </CustomButton>
 
           <p className="text-center text-xs font-bold">
             Sudah Punya Akun?{' '}

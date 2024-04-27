@@ -17,6 +17,8 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "biru-gradient": "linear-gradient(180deg, #24B9FF 0%, #17A2FF 100%)",
+        "biru-gradient-hover": "linear-gradient(180deg, #0D9FE3 0%, #17A2FF 100%)",
+
       },
       colors: {
         biru: '#18A4FF',
@@ -25,7 +27,7 @@ module.exports = {
         abuterang: '#E6E6E6'
       },
       boxShadow: {
-        customin: '0px 6px 0px 0px #0291D8',
+        bayangan_biru: '0px 6px 0px #0291D8',
       },
     },
   },
