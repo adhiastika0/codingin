@@ -4,6 +4,7 @@ module.exports = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
     global: {
@@ -24,7 +25,8 @@ module.exports = {
         biru: '#18A4FF',
         hitam: '#3C4043',
         abugelap: '#BEBBBB',
-        abuterang: '#E6E6E6'
+        abuterang: '#E6E6E6',
+        abu: '#E63633'
       },
       boxShadow: {
         bayangan_biru: '0px 6px 0px #0291D8',

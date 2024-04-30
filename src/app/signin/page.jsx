@@ -134,8 +134,8 @@ export default function Signup() {
           {showError()}
 
           <CustomButton
-            backgroundColor={'biru-gradient'}
-            shadowColor={'bayangan_biru'}
+            backgroundColor={'bg-biru-gradient'}
+            shadowColor={'shadow-bayangan_biru'}
             onClick={handleSignIn}
           >
             Buat Akun

@@ -106,7 +106,11 @@ export default function Signup() {
             />
           </div>
 
-          <CustomButton backgroundColor={'biru-gradient'} shadowColor={'bayangan_biru'} onClick={handleSignUp}>
+          <CustomButton
+            backgroundColor={'bg-biru-gradient'}
+            shadowColor={'shadow-bayangan_biru'}
+            onClick={handleSignUp}
+          >
             Buat Akun
           </CustomButton>
 
