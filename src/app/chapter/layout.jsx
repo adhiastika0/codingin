@@ -5,19 +5,16 @@ import WebSidebar from '@/components/WebSidebar';
 export default function ChapterLayout({ children }) {
   return (
     <>
-      <div className='fixed top-0 left-0 w-full z-50'>
-        <WebHeader />
-        <MobileHeader />
-      </div>
-
-      <div className='flex flex-col mt-[150px]'>
-        <div className='flex'>
-          <WebSidebar className='hidden md:flex lg:w-[360px] md:w-[280px]' />
-          <div className='w-full lg:pl-[384px] md:pl-[304px] pl-6 py-4 pr-6'>
-            {children}
-          </div>
-        </div>
-      </div>
+      <MobileHeader />
+      <WebHeader />
+      <WebSidebar
+        className={
+          'hidden lg:flex md:mt-[148.63px] lg:w-[360px] lg:fixed h-full'
+        }
+      />
+      <main className='h-full lg:pl-[360px] lg:pt-[148.63px] max-sm:pt-[148.63px]'>
+        <div className='px-6 py-4 h-full'>{children}</div>
+      </main>
     </>
   );
 }

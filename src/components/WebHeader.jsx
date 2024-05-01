@@ -7,7 +7,7 @@ import IconContainer from './IconContainer';
 
 function WebHeader() {
   return (
-    <div className='max-md:hidden'>
+    <div className='max-sm:hidden lg:fixed w-full z-[9999] bg-light'>
       <div className='flex justify-between px-6 pt-6 pb-4 border-b border-lightgray'>
         <CustomLogoWithText />
       </div>

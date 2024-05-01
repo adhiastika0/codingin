@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import React, { useState } from 'react';
 import CustomLogoWithText from './CustomLogoWithText';
 import Heart from './customIcon/Heart';
@@ -18,7 +17,7 @@ function MobileHeader() {
   };
 
   return (
-    <div className='md:hidden fixed w-full'>
+    <div className='md:hidden fixed w-full z-[9999] bg-light'>
       <div className='flex justify-between items-center px-6 pt-6 pb-4 border-b border-lightgray'>
         <CustomLogoWithText />
         <HamburgerButton toggleSidebar={toggleSidebar} isOpen={isOpen} />

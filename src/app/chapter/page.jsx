@@ -25,18 +25,20 @@ export default function Chapter() {
   }, []);
 
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-12 md:gap-8 row-auto w-full'>
+    <div
+      className={`grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-2 lg:gap-6 gap-4 row-auto w-full`}
+    >
       {chapters.map((chapter, index) => (
         <div
           key={chapter.id}
-          className='border border-darkgray shadow-card rounded-lg flex flex-col gap-2'
+          className='border border-darkgray shadow-card rounded-lg flex flex-col gap-4'
         >
           <Image
             src={'/chap_variable.svg'}
             alt='chapter "variable" for learn how to use variable in programming'
             width={313}
             height={167}
-            className='w-full rounded-lg'
+            className='rounded-lg w-auto h-auto'
           />
           <div className='flex flex-col gap-2 p-4 border-t border-darkgray '>
             <h2 className='font-bold text-blue'>Chapter {index + 1}</h2>
@@ -56,8 +58,9 @@ export default function Chapter() {
                 width={14}
                 height={14}
                 className='sm:w-4 sm:h-4 xl:w-5 xl:h-5'
+                style={{ height: 'auto', width: 'auto' }}
               />
-              Mulai
+              <h2>Mulai</h2>
             </CustomButton>
           </div>
         </div>

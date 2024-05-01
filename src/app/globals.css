@@ -19,7 +19,6 @@
 
 body {
   color: #3c4043;
-  background: rgba(230, 230, 230, 0.5);
   margin: 0;
   padding: 0;
 }
@@ -28,6 +27,11 @@ html,
 body,
 :root {
   @apply h-full;
+  @apply bg-light;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 @layer utilities {

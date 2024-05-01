@@ -13,9 +13,9 @@ module.exports = {
         darkgray: '#BEBBBB',
         lightgray: '#E6E6E6',
         green: '#21B760',
+        light: '#EDF2F7',
       },
       backgroundImage: {
-        lightgray: '#E6E6E6',
         'gradient-blue': 'linear-gradient(180deg, #24b9ff 0%, #17a2ff 100%)',
         'gradient-green': 'linear-gradient(180deg, #13D866 0%, #21B760 100%)',
         'gradient-blue-20':
