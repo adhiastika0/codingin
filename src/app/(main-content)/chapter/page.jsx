@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import { db } from '@/firebase/clientApp';
-import CustomButton from '@/components/CustomButton';
+import CustomButton from '@/components/common/button/CustomButton';
 
 export default function Chapter() {
   const [chapters, setChapters] = useState([]);

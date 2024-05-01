@@ -21,13 +21,16 @@ body {
   color: #3c4043;
   margin: 0;
   padding: 0;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  box-sizing: border-box;
 }
 
 html,
 body,
 :root {
   @apply h-full;
-  @apply bg-light;
+  @apply bg-white;
 }
 
 html {
@@ -61,6 +64,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0.5rem;
 }
 
 @media (min-width: 640px) {

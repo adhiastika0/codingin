@@ -1,11 +1,9 @@
 import React from 'react';
-import SidebarItemContainer from './SidebarItemContainer';
+import SidebarItemContainer from '../common/sidebar/SidebarItemContainer';
 
 function WebSidebar({ className }) {
   return (
-    <div
-      className={`${className} border-r border-lightgray flex-col`}
-    >
+    <div className={`${className} border-r border-lightgray flex-col`}>
       <SidebarItemContainer />
     </div>
   );

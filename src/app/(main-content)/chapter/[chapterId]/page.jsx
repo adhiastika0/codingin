@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase/clientApp';
-import CustomButton from '@/components/CustomButton';
-import CustomLevel from '@/components/CustomLevel';
+import CustomButton from '@/components/common/button/CustomButton';
+import CustomLevel from '@/components/common/button/CustomLevel';
 import generateZigzagMatrix from '@/utils/zigZagPatternGenerator';
 
 export default function ChapterDetails({ params }) {
