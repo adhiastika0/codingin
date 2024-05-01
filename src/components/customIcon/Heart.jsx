@@ -8,17 +8,17 @@ function Heart({ type }) {
         <Image
           src={'/heart.svg'}
           alt='Heart'
-          width={16}
-          height={16}
-          className='heart'
+          width={20}
+          height={20}
+          className='lg:size-7 md:size-6 sm:size-5'
         />
       ) : (
         <Image
           src={'/gray-heart.svg'}
           alt='Gray Heart'
-          width={16}
-          height={16}
-          className='heart'
+          width={20}
+          height={20}
+          className='lg:size-7 md:size-6 sm:size-5'
         />
       )}
     </div>

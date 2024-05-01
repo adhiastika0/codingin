@@ -9,7 +9,7 @@ export default function ChapterLayout({ children }) {
       <WebHeader />
       <WebSidebar
         className={
-          'hidden lg:flex md:mt-[148.63px] lg:w-[360px] lg:fixed h-full'
+          'hidden lg:flex lg:mt-[148.63px] lg:w-[360px] lg:fixed h-full'
         }
       />
       <main className='h-full lg:pl-[360px] lg:pt-[148.63px] max-sm:pt-[148.63px]'>

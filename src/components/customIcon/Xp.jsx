@@ -7,9 +7,9 @@ function Xp() {
       <Image
         src={'/xp.svg'}
         alt='Xp for up your leaderboard'
-        width={21}
-        height={12}
-        className='xp'
+        width={20}
+        height={20}
+        className='lg:size-8 md:size-7 sm:size-6'
       />
     </div>
   );

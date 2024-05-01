@@ -26,7 +26,7 @@ export default function Chapter() {
 
   return (
     <div
-      className={`grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-2 lg:gap-6 gap-4 row-auto w-full`}
+      className={`grid grid-cols-1 min-[480px]:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2 xl:grid-cols-3 lg:gap-6 gap-4 row-auto w-full`}
     >
       {chapters.map((chapter, index) => (
         <div
@@ -40,12 +40,14 @@ export default function Chapter() {
             height={167}
             className='rounded-lg w-auto h-auto'
           />
-          <div className='flex flex-col gap-2 p-4 border-t border-darkgray '>
+          <div className='flex flex-col gap-4 p-4 border-t border-darkgray '>
             <h2 className='font-bold text-blue'>Chapter {index + 1}</h2>
-            <h2 className='font-bold'>{chapter.title}</h2>
-            <h3 className='line-clamp-2 text-ellipsis overflow-hidden'>
-              {chapter.desc}
-            </h3>
+            <div>
+              <h2 className='font-bold'>{chapter.title}</h2>
+              <h3 className='line-clamp-2 text-ellipsis overflow-hidden'>
+                {chapter.desc}
+              </h3>
+            </div>
             <CustomButton
               href={`/chapter/${chapter.id}`}
               backgroundColor={'bg-gradient-blue'}
@@ -58,7 +60,6 @@ export default function Chapter() {
                 width={14}
                 height={14}
                 className='sm:w-4 sm:h-4 xl:w-5 xl:h-5'
-                style={{ height: 'auto', width: 'auto' }}
               />
               <h2>Mulai</h2>
             </CustomButton>

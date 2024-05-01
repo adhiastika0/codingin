@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomLogoWithText from './CustomLogoWithText';
 import Heart from './customIcon/Heart';
-import Xp from './customIcon/xp';
+import Xp from './customIcon/Xp';
 import Coin from './customIcon/Coin';
 import IconContainer from './IconContainer';
 

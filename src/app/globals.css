@@ -61,7 +61,6 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-block: 0.5rem;
 }
 
 @media (min-width: 640px) {
@@ -79,21 +78,6 @@ h3 {
     font-size: 0.875rem;
     line-height: 1.25rem;
   }
-
-  .coin {
-    width: 18px;
-    height: 18px;
-  }
-
-  .heart {
-    width: 20.5px;
-    height: 18px;
-  }
-
-  .xp {
-    width: 30px;
-    height: 16px;
-  }
 }
 
 @media (min-width: 1280px) {
@@ -110,20 +94,5 @@ h3 {
   h3 {
     font-size: 1rem;
     line-height: 1.5rem;
-  }
-
-  .heart {
-    width: 22.5px;
-    height: 20px;
-  }
-
-  .xp {
-    width: 32px;
-    height: 18px;
-  }
-
-  .coin {
-    width: 20px;
-    height: 20px;
   }
 }
