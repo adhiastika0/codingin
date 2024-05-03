@@ -5,7 +5,7 @@ import BottomBar from "../components/levelPage/bottomBar";
 
 function Level() {
   return (
-    <div className="">
+    <div className="flex flex-col bg-white">
       <TopBar></TopBar>
       <MainSection></MainSection>
       <BottomBar></BottomBar>

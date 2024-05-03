@@ -1,5 +1,6 @@
 import React from "react";
 import AllButton from "./allButton";
+import { FaPlay } from "react-icons/fa6";
 
 function BottomBar() {
   return (
@@ -13,12 +14,11 @@ function BottomBar() {
         Periksa Jawaban
       </AllButton>
       <AllButton
-        textColor="text-white"
         backgroundColor="bg-[#24B9FF]"
         borderColor="border-sky-400"
         shadow="shadow-[0_6px_0_0_#17A2FF]"
       >
-        Run
+        <FaPlay color="white"></FaPlay>
       </AllButton>
     </div>
   );

@@ -1,6 +1,6 @@
 const AllButton = ({
   backgroundColor,
-  textColor,
+  textColor = "",
   borderColor,
   shadow,
   onClick,
