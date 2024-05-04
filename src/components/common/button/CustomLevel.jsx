@@ -14,7 +14,7 @@ function CustomLevel({
   return (
     <Link
       href={href}
-      className={`flex gap-2 items-center border ${borderColor} justify-center w-fit text-white ${
+      className={`flex gap-2 items-center border ${borderColor} justify-center w-fit-content text-white ${
         type === 'off' ? 'bg-lightgray' : `${backgroundColor}`
       } font-bold px-5 py-3 rounded-md ${shadowColor} active:translate-y-[6px] active:shadow-none`}
       style={{

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import SidebarItem from './SidebarItem';
+import { usePathname } from 'next/navigation';
 
 function SidebarItemContainer() {
   const sidebarItems = [
@@ -14,6 +15,8 @@ function SidebarItemContainer() {
     { icon: <h1>⚙️</h1>, text: 'Setting', href: '/setting' },
   ];
 
+  const pathname = usePathname();
+
   return (
     <div className='flex flex-col gap-y-2 justify-center px-6 pt-4'>
       {sidebarItems.map((item) => {
@@ -23,6 +26,7 @@ function SidebarItemContainer() {
             icon={item.icon}
             text={item.text}
             href={item.href}
+            isActive={pathname.includes(item.href)}
           />
         );
       })}

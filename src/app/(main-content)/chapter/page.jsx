@@ -19,7 +19,6 @@ export default function Chapter() {
       querySnapshot.forEach((doc) => {
         arr.push({ ...doc.data(), id: doc.id });
       });
-      console.log(arr);
       setChapters(arr);
     });
   }, []);
