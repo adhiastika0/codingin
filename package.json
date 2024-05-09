@@ -9,13 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "ai": "^3.0.35",
     "cookies-next": "^4.1.1",
     "firebase": "^10.11.0",
     "firebase-tools": "^13.7.2",
     "next": "14.2.1",
+    "openai": "^4.39.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-firebase-hooks": "^5.1.1"
+    "react-firebase-hooks": "^5.1.1",
+    "zod": "^3.23.5"
   },
   "devDependencies": {
     "eslint": "^8",
