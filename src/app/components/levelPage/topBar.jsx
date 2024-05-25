@@ -11,7 +11,7 @@ function TopBar() {
           <FaChevronLeft size={28}></FaChevronLeft>
         </a>
       </div>
-      <HeartIndicator heartNumber={3}></HeartIndicator>
+      <HeartIndicator heartNumber={2}></HeartIndicator>
       <AllButton
         borderColor="border-[#BEBBBB]"
         backgroundColor="bg-white"

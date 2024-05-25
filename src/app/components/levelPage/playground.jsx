@@ -14,19 +14,22 @@ import * as En from "blockly/msg/en";
 Blockly.setLocale(En);
 
 function Playground(props) {
-  const blocklyDiv = useRef("blocklyDiv");
+  const blocklyDiv = useRef();
   const toolbox = useRef();
   let primaryWorkspace = useRef();
 
   useEffect(() => {
     const { initialXml, children, ...rest } = props;
-    primaryWorkspace.current = Blockly.inject(blocklyDiv.current, {
-      toolbox: toolbox.current,
-      ...rest,
-    });
+
+    if (!primaryWorkspace.current) {
+      primaryWorkspace.current = Blockly.inject(blocklyDiv.current, {
+        toolbox: toolbox.current,
+        ...rest,
+      });
+    }
 
     if (initialXml) {
-      Blockly.Xml.domToWorkspace(
+      Blockly.Xml.clearWorkspaceAndLoadFromXml(
         Blockly.utils.xml.textToDom(initialXml),
         primaryWorkspace.current
       );
@@ -35,11 +38,7 @@ function Playground(props) {
 
   return (
     <>
-      <div
-        ref={blocklyDiv}
-        id="blocklyDiv"
-        className=" absolute h-1/2 w-full bottom-0"
-      />
+      <div ref={blocklyDiv} id="blocklyDiv" className=" h-full" />
       <div style={{ display: "none" }} ref={toolbox}>
         {props.children}
       </div>
