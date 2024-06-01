@@ -1,7 +1,7 @@
 'use client';
 
 import BackButton from '@/components/common/button/BackButton';
-import CustomButton from '@/components/common/button/CustomButton';
+import CustomLink from '@/components/common/button/CustomLink';
 import { db } from '@/firebase/clientApp';
 import { doc, getDoc } from 'firebase/firestore';
 import Image from 'next/image';
@@ -38,12 +38,9 @@ function Module({ params }) {
     <section className='flex flex-col gap-4'>
       <BackButton>
         <div className='flex gap-2 items-center'>
-          <CustomButton
-            borderColor={'border-darkgray'}
-            href={`${pathname}`}
-          >
+          <CustomLink borderColor={'border-darkgray'} href={`${pathname}`}>
             <h2>📖</h2>
-          </CustomButton>
+          </CustomLink>
           <h2>Modul Belajar</h2>
         </div>
       </BackButton>

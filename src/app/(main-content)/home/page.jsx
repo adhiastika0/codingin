@@ -1,15 +1,37 @@
 'use client';
 
-import CustomButton from '@/components/common/button/CustomButton';
-import Image from 'next/image';
-import React from 'react';
+import { db } from '@/firebase/clientApp';
+import { getUserByCookies } from '@/lib/Users';
+import { collection } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
-  return (
-    <div
-      className={``}
-    >
-      <h2>Welcome</h2>
-    </div>
-  );
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const fetchUserCollection = async () => {
+      const userRef = collection(db, 'users');
+
+      const user = await getUserByCookies(userRef);
+      setUser(user);
+    };
+
+    fetchUserCollection();
+  }, []);
+
+  if (user) {
+    return (
+      <div>
+        <p>Username: {user.username}</p>
+        <p>Email: {user.email}</p>
+        <p>friend_count: {user.friend_count}</p>
+        <p>health: {user.health}</p>
+        <p>profile_picture: {user.profile_picture}</p>
+        <p>rank: {user.rank}</p>
+        <p>xp: {user.xp}</p>
+      </div>
+    );
+  }
+
+  return <div></div>;
 }

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import { db } from '@/firebase/clientApp';
-import CustomButton from '@/components/common/button/CustomButton';
+import CustomLink from '@/components/common/button/CustomLink';
 
 export default function Chapter() {
   const [chapters, setChapters] = useState([]);
@@ -47,7 +47,7 @@ export default function Chapter() {
                 {chapter.desc}
               </h3>
             </div>
-            <CustomButton
+            <CustomLink
               href={`/chapter/${chapter.id}`}
               backgroundColor={'bg-gradient-blue'}
               shadowColor={'shadow-button-blue'}
@@ -61,7 +61,7 @@ export default function Chapter() {
                 className='sm:w-4 sm:h-4 xl:w-5 xl:h-5'
               />
               <h2>Mulai</h2>
-            </CustomButton>
+            </CustomLink>
           </div>
         </div>
       ))}

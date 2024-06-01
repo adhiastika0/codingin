@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase/clientApp';
-import CustomButton from '@/components/common/button/CustomButton';
 import CustomLevel from '@/components/common/button/CustomLevel';
 import generateZigzagMatrix from '@/utils/zigZagPatternGenerator';
+import CustomLink from '@/components/common/button/CustomLink';
 
 export default function ChapterDetails({ params }) {
   const { chapterId } = params;
@@ -43,13 +43,13 @@ export default function ChapterDetails({ params }) {
           <h1>{chapter.title}</h1>
           <h3>{chapter.desc}</h3>
         </div>
-        <CustomButton
+        <CustomLink
           href={`/chapter/${chapterId}/module/${modules.id}`}
           borderColor={'border-darkgray'}
           shadowColor={'shadow-button-gray'}
         >
           📖
-        </CustomButton>
+        </CustomLink>
       </div>
       <div className='flex flex-col items-center'>
         <div className='grid grid-cols-3 gap-4'>

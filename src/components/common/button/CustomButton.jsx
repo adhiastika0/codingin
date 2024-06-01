@@ -1,19 +1,12 @@
-import Link from 'next/link';
-
-const CustomButton = ({
-  children,
-  backgroundColor,
-  borderColor,
-  shadowColor,
-  href,
-}) => {
+const CustomButton = ({ children, backgroundColor, shadowColor, onClick }) => {
   return (
-    <Link
-      href={href}
-      className={`flex gap-2 items-center border ${borderColor} justify-center size-fit text-white ${backgroundColor} font-bold lg:py-2 lg:px-3 py-1 px-2 rounded-md ${shadowColor}`}
+    <button
+      tabIndex={0}
+      className={`flex items-center h-10 justify-center text-white self-stretch ${backgroundColor} font-bold py-2 px-4 rounded-md ${shadowColor} active:translate-y-[6px] active:shadow-none`}
+      onClick={onClick}
     >
       {children}
-    </Link>
+    </button>
   );
 };
 
