@@ -103,7 +103,7 @@ export default function Signup() {
       console.log(user.email);
 
       // Lakukan redirect atau operasi lainnya
-      router.push('/beranda');
+      router.push('/home');
 
       getUserCollection(user.email)
         .then((querySnapshot) => {

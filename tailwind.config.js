@@ -35,16 +35,16 @@ module.exports = {
         "biru-gradient-hover": "linear-gradient(180deg, #0D9FE3 0%, #17A2FF 100%)",
 
       },
-      colors: {
-        biru: '#18A4FF',
-        hitam: '#3C4043',
-        abugelap: '#BEBBBB',
-        abuterang: '#E6E6E6',
-        abu: '#E63633'
-      },
-      boxShadow: {
-        bayangan_biru: '0px 6px 0px #0291D8',
-      },
+      // colors: {
+      //   biru: '#18A4FF',
+      //   hitam: '#3C4043',
+      //   abugelap: '#BEBBBB',
+      //   abuterang: '#E6E6E6',
+      //   abu: '#E63633'
+      // },
+      // boxShadow: {
+      //   bayangan_biru: '0px 6px 0px #0291D8',
+      // },
     },
   },
   plugins: [],
