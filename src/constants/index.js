@@ -461,7 +461,7 @@ export const toolboxJson = {
             TEXT: {
               shadow: {
                 type: 'text',
-                fields: { TEXT: 'abc' },
+                fields: { TEXT: 'abc', FIELDNAME: 'text' },
               },
             },
           },

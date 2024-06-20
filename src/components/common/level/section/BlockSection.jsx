@@ -1,13 +1,19 @@
 import React from 'react';
-import { toolboxCategories } from '@blockly/dev-tools';
 import Playground from '../Playground';
 import * as Blockly from 'blockly/core';
 import { toolboxJson } from '@/constants';
 
-function BlockSection({ updateCode }) {
+function BlockSection({
+  updateCode,
+  levelId,
+  selectedCodeLanguage,
+  workspaceRef,
+}) {
   return (
     <Playground
+      levelId={levelId}
       updateCode={updateCode}
+      selectedCodeLanguage={selectedCodeLanguage}
       readOnly={false}
       trashcan={true}
       zoom={{

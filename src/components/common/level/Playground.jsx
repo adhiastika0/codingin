@@ -8,7 +8,7 @@ import { BlocklyCodeGenerator } from '@/utils/BlocklyCodeGenerator';
 
 setLocale(En);
 
-function Playground({ updateCode, ...props }) {
+function Playground({ levelId, updateCode, selectedCodeLanguage, ...props }) {
   const blocklyDiv = useRef(null);
 
   useEffect(() => {
@@ -23,13 +23,15 @@ function Playground({ updateCode, ...props }) {
     const zoomToFit = new ZoomToFitControl(workspace);
     zoomToFit.init();
 
+    const getStateKey = (levelId) => `workspace-state-level-${levelId}`;
+
     const saveWorkspace = () => {
       const state = serialization.workspaces.save(workspace);
-      localStorage.setItem('workspace-state', JSON.stringify(state));
+      localStorage.setItem(getStateKey(levelId), JSON.stringify(state));
     };
 
     const loadWorkspace = () => {
-      const state = localStorage.getItem('workspace-state');
+      const state = localStorage.getItem(getStateKey(levelId));
       if (state) {
         serialization.workspaces.load(JSON.parse(state), workspace);
       }
@@ -37,8 +39,7 @@ function Playground({ updateCode, ...props }) {
 
     const generateCode = (event) => {
       if (workspace.isDragging()) return;
-      const code = BlocklyCodeGenerator(workspace, 'PHP');
-
+      const code = BlocklyCodeGenerator(workspace, selectedCodeLanguage);
       updateCode(code);
     };
 
@@ -51,8 +52,9 @@ function Playground({ updateCode, ...props }) {
     return () => {
       workspace.dispose();
       workspace.removeChangeListener(saveWorkspace);
+      workspace.removeChangeListener(generateCode);
     };
-  }, [props, updateCode]);
+  }, [selectedCodeLanguage, updateCode]);
 
   return <div ref={blocklyDiv} id='blocklyDiv' className='size-full '></div>;
 }

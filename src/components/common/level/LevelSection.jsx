@@ -1,17 +1,34 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import QuestionSection from './QuestionSection';
 import BlockSection from './section/BlockSection';
 import CodeSection from './section/CodeSection';
 
-function LevelSection(props) {
+function LevelSection({ levelId }) {
   const [activeButton, setActiveButton] = useState('block');
   const [generatedCode, setGeneratedCode] = useState('');
+  const [selectedCodeLanguage, setSelectedCodeLanguage] =
+    useState('JavaScript');
+
+  const handleSelectedCodeLanguage = (value) => {
+    setSelectedCodeLanguage(value);
+  };
 
   const contentMap = {
-    block: <BlockSection updateCode={setGeneratedCode} />,
-    code: <CodeSection code={generatedCode} />,
+    block: (
+      <BlockSection
+        updateCode={setGeneratedCode}
+        levelId={levelId}
+        selectedCodeLanguage={selectedCodeLanguage}
+      />
+    ),
+    code: (
+      <CodeSection
+        code={generatedCode}
+        onCodeLanguageChange={handleSelectedCodeLanguage}
+      />
+    ),
     hasil: 'Konten untuk button Hasil',
   };
 

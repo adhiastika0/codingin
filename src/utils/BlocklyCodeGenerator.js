@@ -4,11 +4,22 @@ import { phpGenerator } from 'blockly/php';
 import { luaGenerator } from 'blockly/lua';
 import { dartGenerator } from 'blockly/dart';
 
-export function BlocklyCodeGenerator(workspace, selectedLanguage) {
+export function BlocklyCodeGenerator(workspace, selectedCodeLanguage) {
   let code;
-  switch (selectedLanguage) {
+  console.log(workspace);
+  switch (selectedCodeLanguage) {
     case 'JavaScript':
+      javascriptGenerator.forBlock['text_print'] = function (block) {
+        const argument0 =
+          javascriptGenerator.valueToCode(
+            block,
+            'TEXT',
+            javascriptGenerator.ORDER_NONE
+          ) || '""';
+        return 'console.log(' + argument0 + ');\n';
+      };
       code = javascriptGenerator.workspaceToCode(workspace);
+
       break;
     case 'Python':
       code = pythonGenerator.workspaceToCode(workspace);

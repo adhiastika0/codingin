@@ -1,16 +1,20 @@
 import React from 'react';
 
-function CodeSection({ code }) {
+function CodeSection({ code, onCodeLanguageChange }) {
+  const handleLanguageChange = (e) => {
+    onCodeLanguageChange(e.target.value);
+  };
+
   return (
     <div>
-      <select id='generateDropdown' onchange='regenerate()'>
-        <option value='javascript'>JavaScript</option>
-        <option value='python'>Python</option>
-        <option value='php'>PHP</option>
-        <option value='lua'>Lua</option>
-        <option value='dart'>Dart</option>
+      <select id='code-select' onChange={handleLanguageChange}>
+        <option value='JavaScript'>JavaScript</option>
+        <option value='Python'>Python</option>
+        <option value='PHP'>PHP</option>
+        <option value='Lua'>Lua</option>
+        <option value='Dart'>Dart</option>
       </select>
-      <select id='languageDropdown' onchange='languageChange()'>
+      <select id='language-select'>
         <option value='id'>Bahasa Indonesia</option>
         <option value='en'>English</option>
       </select>
