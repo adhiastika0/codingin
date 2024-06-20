@@ -2,7 +2,11 @@
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from 'firebase/auth';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db, auth } from '@/firebase/clientApp';
 import CustomButton from '@/components/button';
@@ -13,6 +17,10 @@ export default function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({
+    prompt: 'select_account',
+  });
 
   const getUserCollection = async (userEmail) => {
     if (!userEmail) {
@@ -49,7 +57,7 @@ export default function Signup() {
         const userEmail = userCredential.user.email;
         console.log(userEmail);
         setCookie('userEmail', userEmail);
-        alert('berhasil login cik');
+        alert('berhasil login');
         router.push('/beranda');
 
         getUserCollection(userEmail)
@@ -84,6 +92,47 @@ export default function Signup() {
       });
   };
 
+  const handleSignInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      // Autentikasi berhasil, lakukan sesuatu seperti redirect atau menampilkan pesan sukses
+      const user = result.user;
+      console.log('Login berhasil dengan Google:', user);
+      setCookie('userEmail', user.email);
+
+      console.log(user.email);
+
+      // Lakukan redirect atau operasi lainnya
+      router.push('/beranda');
+
+      getUserCollection(user.email)
+        .then((querySnapshot) => {
+          if (querySnapshot) {
+            console.log('User collection:', querySnapshot);
+            querySnapshot.forEach((doc) => {
+              // Akses data dokumen
+              const docData = doc.data();
+
+              // Tampilkan nilai dari key 'email' dan 'rank'
+              console.log('Email:', docData.email);
+              console.log('Rank:', docData.rank);
+
+              // Lakukan operasi lain dengan data dokumen jika diperlukan
+            });
+            // Lakukan operasi lain dengan querySnapshot jika diperlukan
+          }
+        })
+        .catch((error) => {
+          console.error('Error getting user collection:', error);
+          setError(error);
+        });
+    } catch (error) {
+      // Tangani error
+      console.error('Error saat login dengan Google:', error);
+      setError(error);
+    }
+  };
+
   function showError() {
     if (error) {
       return (
@@ -108,7 +157,7 @@ export default function Signup() {
           />
           <p className="text-2xl">Codingin</p>
         </div>
-        <p className="font-bold">Daftar Akun Codingin</p>
+        <p className="font-bold">Masuk Akun Codingin</p>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <label className="text-sm font-bold">Email</label>
@@ -129,6 +178,12 @@ export default function Signup() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <a
+              className="text-biru text-right text-xs font-bold"
+              href="/forgot-password"
+            >
+              Lupa Password?
+            </a>
           </div>
 
           {showError()}
@@ -138,7 +193,7 @@ export default function Signup() {
             shadowColor={'shadow-bayangan_biru'}
             onClick={handleSignIn}
           >
-            Buat Akun
+            Masuk Akun
           </CustomButton>
 
           <p className="text-center text-xs font-bold">
@@ -153,7 +208,10 @@ export default function Signup() {
           <p className="text-abugelap">atau</p>
           <hr className="w-full h-px border-abugelap" />
         </div>
-        <button className="flex border-abugelap font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border">
+        <button
+          onClick={handleSignInWithGoogle}
+          className="flex border-abugelap font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border hover:bg-abuterang active:bg-abuterang"
+        >
           <Image
             src="/google.svg"
             width={18}

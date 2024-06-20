@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 
-const AutoAdjustTextarea = ({ value, onChange }) => {
+const AutoAdjustTextarea = ({ value = '', onChange }) => {
   const textareaRef = useRef(null);
 
   useEffect(() => {

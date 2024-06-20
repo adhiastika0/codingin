@@ -1,13 +1,25 @@
 'use client';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { auth, db } from '@/firebase/clientApp';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+
+import { auth, db } from '@/firebase/clientApp'; // Assuming db is your Firestore instance
 import CustomButton from '@/components/button';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 
 async function setUser(username, email) {
   try {
+    // Check if a user with the same email already exists
+    const q = query(collection(db, 'users'), where('email', '==', email));
+    const querySnapshot = await getDocs(q);
+
+    if (!querySnapshot.empty) {
+      throw new Error('Email sudah terdaftar');
+    }
+
+    // If no existing user found, proceed to add a new document
     const docRef = await addDoc(collection(db, 'users'), {
       username: username,
       email: email,
@@ -19,44 +31,129 @@ async function setUser(username, email) {
       coin: 0,
     });
     console.log('Document written with ID: ', docRef.id);
-    // Create a reference to a new document in the 'users' collection
   } catch (error) {
     console.error('Error saving user data:', error);
-    // Handle errors appropriately, e.g., display an error message to the user
+    throw error; // Propagate the error to handle it in the signup process
   }
 }
+
+async function getUserCollection(email) {
+  try {
+    const q = query(collection(db, 'users'), where('email', '==', email));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map((doc) => doc.data());
+  } catch (error) {
+    console.error('Error getting user collection:', error);
+    throw error;
+  }
+}
+
 export default function Signup() {
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [createUserWithEmailAndPassword, loading, error] =
+  const [error, setError] = useState(null);
+
+  const [createUserWithEmailAndPassword, loading] =
     useCreateUserWithEmailAndPassword(auth);
+  const provider = new GoogleAuthProvider();
+  provider.setCustomParameters({
+    prompt: 'select_account',
+  });
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setError('');
+
+    if (!email || !password || !username) {
+      setError('Masukkan email, password, dan username');
+      return; // Exit the function if required fields are empty
+    }
+
     // Basic email format validation (can be improved with regular expressions)
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert('Please enter a valid email address.');
+      setError('Masukkan email yang valid');
       return; // Exit the function if email is invalid
     }
 
-    if (!email || !password) {
-      alert('Please enter both email and password.');
-      return; // Exit the function if required fields are empty
-    }
     try {
+      // Attempt to create user with email and password
       const res = await createUserWithEmailAndPassword(email, password);
-      setUser(username, email);
 
-      console.log(email, password);
-      console.log(loading);
-      console.log(error);
-      console.log({ res });
+      // If successful, attempt to add user data to Firestore
+      await setUser(username, email);
+
+      // Clear form fields and errors upon successful signup
       setUsername('');
       setEmail('');
       setPassword('');
-    } catch (e) {
-      console.error('ERROR', e);
+      setError('');
+
+      // Inform user and navigate to signin page
+      alert('Berhasil Membuat Akun');
+      router.push('/signin');
+    } catch (error) {
+      // Handle specific error for existing email
+      if (error.message === 'Email sudah terdaftar') {
+        setError(
+          'Email sudah terdaftar. Gunakan email lain atau masuk ke akun yang sudah ada.'
+        );
+      } else {
+        console.error('ERROR', error);
+      }
+    }
+  };
+
+  function showError() {
+    if (error) {
+      return (
+        <p className="flex text-red-600 text-xs font-semibold self-stretch">
+          {error}
+        </p>
+      );
+    }
+    return null;
+  }
+
+  const handleSignInWithGoogle = async () => {
+    try {
+      setError('');
+      const result = await signInWithPopup(auth, provider);
+      // Authentication successful, proceed with operations like redirect or displaying success message
+      const user = result.user;
+      console.log('Login berhasil dengan Google:', user);
+
+      // Check if the user's email already exists in Firestore
+      const q = query(
+        collection(db, 'users'),
+        where('email', '==', user.email)
+      );
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        throw new Error('Email sudah terdaftar');
+      }
+
+      // If email is not registered, proceed to add user to Firestore
+      await setUser('user', user.email);
+
+      // Redirect or perform other operations
+      router.push('/signin');
+
+      // Retrieve user collection data if needed
+      const userData = await getUserCollection(user.email);
+      console.log('User collection:', userData);
+    } catch (error) {
+      // Handle errors
+      console.error('Error saat login dengan Google:', error);
+      if (error.message === 'Email sudah terdaftar') {
+        setError(
+          'Email sudah terdaftar. Gunakan email lain atau masuk ke akun yang sudah ada.'
+        );
+      } else {
+        setError('Gagal masuk dengan Google. Silakan coba lagi.');
+      }
     }
   };
 
@@ -106,6 +203,8 @@ export default function Signup() {
             />
           </div>
 
+          <div className="w-[280px]">{showError()}</div>
+
           <CustomButton
             backgroundColor={'bg-biru-gradient'}
             shadowColor={'shadow-bayangan_biru'}
@@ -116,7 +215,7 @@ export default function Signup() {
 
           <p className="text-center text-xs font-bold">
             Sudah Punya Akun?{' '}
-            <a className="text-biru" href="/login">
+            <a className="text-biru" href="/signin">
               Masuk
             </a>
           </p>
@@ -126,7 +225,10 @@ export default function Signup() {
           <p className="text-abugelap">atau</p>
           <hr className="w-full h-px border-abugelap" />
         </div>
-        <button className="flex border-abugelap font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border">
+        <button
+          onClick={handleSignInWithGoogle}
+          className="flex border-abugelap font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border hover:bg-abuterang active:bg-abuterang"
+        >
           <Image
             src="/google.svg"
             width={18}

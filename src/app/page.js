@@ -16,6 +16,11 @@ export default async function Home() {
           {/* Add more user details as needed */}
         </div>
       ))}
+      <ol>
+        <li>
+          1. aku gg
+        </li>
+      </ol>
     </div>
   );
 }

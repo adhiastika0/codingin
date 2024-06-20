@@ -1,19 +1,48 @@
 'use client';
+import { useEffect, useState, useRef } from 'react';
 import Modal from '@/components/modal';
 import CustomButton from '@/components/button';
-import { useState, useRef, useEffect } from 'react';
 import ChatBubble from '@/components/chat';
 import Image from 'next/image';
 import { useChat } from 'ai/react';
 import AutoAdjustTextarea from '@/components/textarea';
 
 export default function Lensa() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const { messages, input, handleInputChange, handleSubmit, append } =
+    useChat();
   const [showLensaDeveloper, setShowLensaDeveloper] = useState(true);
+  const [initialMessageAppended, setInitialMessageAppended] = useState(false); // State untuk memantau apakah pesan awal sudah di-append
   const messageContainerRef = useRef(null);
+  const formRef = useRef(null);
 
-  // Effect untuk mengatur posisi scroll ke bawah saat pesan baru ditambahkan
+  const handleRecommendedQuestion = (question) => {
+    console.log(question);
+    append({ role: 'user', content: question });
+  };
+
+  // Memastikan 'tes' muncul saat pertama kali render
+  if (!initialMessageAppended) {
+    const userCode = `
+\`\`\`javascript
+var Umur;
+
+Umur = 13;
+if (Umur < 13) {
+  console.log('Anak-anak');
+} else if (Umur < 20) {
+  console.log('Remaja');
+} else {
+  console.log('Dewasa');
+}
+
+\`\`\`
+`;
+
+    append({ role: 'user', content: userCode });
+    setInitialMessageAppended(true); // Menandai bahwa pesan sudah di-append
+  }
   useEffect(() => {
+    // Mengatur posisi scroll ke bawah saat pesan baru ditambahkan
     if (messageContainerRef.current) {
       messageContainerRef.current.scrollTop =
         messageContainerRef.current.scrollHeight;
@@ -46,19 +75,28 @@ export default function Lensa() {
             ref={messageContainerRef}
           >
             {messages.map((m) => (
-              <ChatBubble key={m.id} role={m.role} content={m.content} />
+              <ChatBubble
+                key={m.id}
+                role={m.role}
+                content={m.content}
+                handleRecommendedQuestion={handleRecommendedQuestion}
+              />
             ))}
           </div>
-          <div className="flex items-end w-full justify-between bottom-0 p-4 gap-2 border-t border-abuterang">
+          <form
+            onSubmit={handleSubmit}
+            className="flex items-end w-full justify-between bottom-0 p-4 gap-2 border-t border-abuterang"
+            ref={formRef}
+          >
             <AutoAdjustTextarea value={input} onChange={handleInputChange} />
             <CustomButton
+              type="submit"
               backgroundColor={'bg-biru-gradient'}
               shadowColor={'shadow-bayangan_biru'}
-              onClick={handleSubmit}
             >
               <Image src="/play.svg" width={18} height={18} alt="Cross" />
             </CustomButton>
-          </div>
+          </form>
         </div>
       </Modal>
     </div>
