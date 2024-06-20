@@ -4,7 +4,7 @@ import HealthUpdater from '@/lib/Hearts';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 
-function Heart({ type }) {
+function Heart({ available }) {
   useEffect(() => {
     const updateHealth = async () => {
       try {
@@ -20,21 +20,21 @@ function Heart({ type }) {
   }, []);
   return (
     <div className='icon-container'>
-      {type === 'full' ? (
+      {available ? (
         <Image
           src={'/heart.svg'}
           alt='Heart'
           width={20}
           height={20}
-          className='lg:size-7 md:size-6 sm:size-5'
+          className='lg:size-6 md:size-5 sm:size-4'
         />
       ) : (
         <Image
-          src={'/gray-heart.svg'}
+          src={'/gray_heart.svg'}
           alt='Gray Heart'
           width={20}
           height={20}
-          className='lg:size-7 md:size-6 sm:size-5'
+          className='lg:size-6 md:size-5 sm:size-4'
         />
       )}
     </div>

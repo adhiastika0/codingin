@@ -32,15 +32,15 @@ function MobileHeader() {
   };
 
   return (
-    <div className='fixed w-full z-[9999] h-[162px] bg-white border-b border-lightgray'>
-      <div className='flex flex-col h-full'>
+    <div className='lg:hidden flex fixed w-full z-[9999] h-fit bg-white border-b border-lightgray'>
+      <div className='flex flex-col size-full'>
         <div className='flex justify-between items-center px-6 pt-6 pb-4 border-b border-lightgray'>
           <CustomLogoWithText />
           <HamburgerButton toggleSidebar={toggleSidebar} isOpen={isOpen} />
         </div>
-        <div className='flex justify-center items-center px-6 pt-6 pb-4 gap-6 h-full'>
+        <div className='flex justify-center items-center py-2 gap-6'>
           <IconContainer text={`${user?.health}`}>
-            <Heart type={'full'} />
+            <Heart available />
           </IconContainer>
           <IconContainer text={`${user?.xp}`}>
             <Xp />

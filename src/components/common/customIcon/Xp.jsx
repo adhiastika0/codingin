@@ -9,7 +9,7 @@ function Xp() {
         alt='Xp for up your leaderboard'
         width={20}
         height={20}
-        className='lg:size-8 md:size-7 sm:size-6'
+        className='lg:size-6 md:size-5 sm:size-4'
       />
     </div>
   );

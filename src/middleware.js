@@ -14,5 +14,6 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/home', '/chapter/:path*'],
+  matcher: ['/home'],
+  // matcher: ['/home', '/chapter/:path*'],
 };

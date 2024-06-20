@@ -8,7 +8,7 @@ function BackButton({ children }) {
   const router = useRouter();
 
   return (
-    <div className='flex gap-4 items-center justify-start'>
+    <div className='flex gap-4 items-center justify-start w-[172px]'>
       <button className='h-full py-2' onClick={() => router.back()}>
         <Image
           src={'/chevron-left.svg'}

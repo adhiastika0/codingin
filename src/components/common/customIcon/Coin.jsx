@@ -9,7 +9,7 @@ function Coin() {
         alt='coin is currency in codingin, buy heart so you can push your rank'
         width={20}
         height={20}
-        className='lg:size-8 md:size-7 sm:size-6'
+        className='lg:size-6 md:size-5 sm:size-4'
       />
     </div>
   );

@@ -8,9 +8,6 @@ import CustomLink from '@/components/common/button/CustomLink';
 
 export default function Chapter() {
   const [chapters, setChapters] = useState([]);
-  // const [heart, setheart] = useState();
-  // const [coin, setCoin] = useState();
-  // const [xp, setXp] = useState();
 
   useEffect(() => {
     const q = query(collection(db, 'chapters'));
