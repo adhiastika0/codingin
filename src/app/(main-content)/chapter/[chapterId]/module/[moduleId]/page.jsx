@@ -50,7 +50,7 @@ function Module({ params }) {
           title='Video for learn --'
           src='https://www.youtube.com/embed/B9JA53mZdoQ?si=7bpOlO9rjMpY6OBB'
           allowFullScreen
-          className='rounded-lg m-auto w-[100%] min-h-52 lg:w-[86.5%] lg:min-h-80 md:w-[80%] md:min-h-92 sm:min-h-80 xl:w-[91.5%] xl:min-h-[500px] min-[1440px]:min-h-[512px]'
+          className='rounded-lg m-auto size-full aspect-video'
         />
       </div>
       <div className='flex flex-col gap-1 w-full'>

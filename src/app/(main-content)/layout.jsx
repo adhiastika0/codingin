@@ -10,7 +10,7 @@ export default function MainLayout({ children }) {
       <WebSidebar
         className={'hidden lg:flex lg:mt-[162px] lg:w-[360px] lg:fixed h-full'}
       />
-      <div className='h-full lg:pl-[360px] !pt-[162px]'>
+      <div className='h-full lg:pl-[360px] lg:pt-[162px] pt-[96px]'>
         <div className='px-6 py-4 h-full'>{children}</div>
       </div>
     </>
