@@ -1,35 +1,23 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '@/firebase/clientApp';
+import React from 'react';
 import CustomLevel from '@/components/common/button/CustomLevel';
 import generateZigzagMatrix from '@/utils/zigZagPatternGenerator';
 import CustomLink from '@/components/common/button/CustomLink';
+import { useChapters } from '@/hooks/ChapterContext';
 
 export default function ChapterDetails({ params }) {
   const { chapterId } = params;
-  const [chapter, setChapter] = useState(null);
+  const { chapters, isLoading, error } = useChapters();
 
-  useEffect(() => {
-    if (!chapterId) return;
+  const chapter = chapters.find((chapter) => chapter.id === chapterId);
 
-    const getChapterDetails = async () => {
-      const docRef = doc(db, 'chapters', chapterId);
-      const result = await getDoc(docRef);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-      if (result.exists()) {
-        setChapter(result.data());
-      } else {
-        console.error('Chapter not found');
-      }
-    };
-
-    getChapterDetails();
-  }, [chapterId]);
-
-  if (!chapter) {
-    return <div>Loading chapter details...</div>;
+  if (error) {
+    return <div>Error: {error}</div>;
   }
 
   const { levels = [], modules = {} } = chapter;
@@ -56,7 +44,7 @@ export default function ChapterDetails({ params }) {
           {levels.map((level, index) =>
             pattern[index].map((item, itemIndex) => {
               return (
-                <div key={itemIndex}>
+                <div key={level.id}>
                   {item === 1 && (
                     <CustomLevel
                       key={`${level.id}`}

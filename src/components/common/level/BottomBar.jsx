@@ -2,9 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import CustomButton from '../button/CustomButton';
 
-function BottomBar() {
+function BottomBar({ handleCheckCode }) {
   return (
-    <div className='my-6 flex justify-between'>
+    <div className='flex justify-between mt-12'>
       <CustomButton
         backgroundColor='bg-white'
         shadowColor='shadow-button-blue'
@@ -13,7 +13,11 @@ function BottomBar() {
       >
         Periksa Jawaban
       </CustomButton>
-      <CustomButton backgroundColor='bg-blue' shadowColor='shadow-button-blue'>
+      <CustomButton
+        backgroundColor='bg-blue'
+        shadowColor='shadow-button-blue'
+        onClick={handleCheckCode}
+      >
         <Image
           src={'/ph_play-fill.svg'}
           alt='start button for enter a chapter in codingin'

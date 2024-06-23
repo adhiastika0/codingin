@@ -8,7 +8,13 @@ import { BlocklyCodeGenerator } from '@/utils/BlocklyCodeGenerator';
 
 setLocale(En);
 
-function Playground({ levelId, updateCode, selectedCodeLanguage, ...props }) {
+function Playground({
+  levelId,
+  style,
+  setGeneratedCode,
+  selectedCodeLanguage,
+  ...props
+}) {
   const blocklyDiv = useRef(null);
 
   useEffect(() => {
@@ -37,13 +43,14 @@ function Playground({ levelId, updateCode, selectedCodeLanguage, ...props }) {
       }
     };
 
-    const generateCode = (event) => {
+    function updateCode() {
       if (workspace.isDragging()) return;
-      const code = BlocklyCodeGenerator(workspace, selectedCodeLanguage);
-      updateCode(code);
-    };
 
-    workspace.addChangeListener(generateCode);
+      const code = BlocklyCodeGenerator(workspace, selectedCodeLanguage);
+      setGeneratedCode(code);
+    }
+
+    workspace.addChangeListener(updateCode);
 
     loadWorkspace();
 
@@ -52,11 +59,16 @@ function Playground({ levelId, updateCode, selectedCodeLanguage, ...props }) {
     return () => {
       workspace.dispose();
       workspace.removeChangeListener(saveWorkspace);
-      workspace.removeChangeListener(generateCode);
     };
-  }, [selectedCodeLanguage, updateCode]);
+  }, [levelId, selectedCodeLanguage, setGeneratedCode]);
 
-  return <div ref={blocklyDiv} id='blocklyDiv' className='size-full '></div>;
+  return (
+    <div
+      ref={blocklyDiv}
+      id='blocklyDiv'
+      className={`size-full ${style}`}
+    ></div>
+  );
 }
 
 export default Playground;

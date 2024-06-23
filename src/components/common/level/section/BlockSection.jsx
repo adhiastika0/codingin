@@ -4,15 +4,16 @@ import * as Blockly from 'blockly/core';
 import { toolboxJson } from '@/constants';
 
 function BlockSection({
-  updateCode,
   levelId,
+  style,
+  setGeneratedCode,
   selectedCodeLanguage,
-  workspaceRef,
 }) {
   return (
     <Playground
       levelId={levelId}
-      updateCode={updateCode}
+      style={style}
+      setGeneratedCode={setGeneratedCode}
       selectedCodeLanguage={selectedCodeLanguage}
       readOnly={false}
       trashcan={true}

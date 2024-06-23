@@ -9,7 +9,7 @@ const CustomButton = ({
   return (
     <button
       tabIndex={0}
-      className={`flex items-center h-10 justify-center ${textColor} self-stretch ${backgroundColor} font-bold py-2 px-4 rounded-md ${border} ${shadowColor} active:translate-y-[6px] active:shadow-none`}
+      className={`flex items-center justify-center ${textColor} self-stretch ${backgroundColor} font-bold py-2 px-4 rounded-md ${border} ${shadowColor} active:translate-y-[6px] active:shadow-none`}
       onClick={onClick}
     >
       {children}

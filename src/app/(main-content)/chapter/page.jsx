@@ -1,24 +1,20 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { collection, onSnapshot, query } from 'firebase/firestore';
-import { db } from '@/firebase/clientApp';
 import CustomLink from '@/components/common/button/CustomLink';
+import { useChapters } from '@/hooks/ChapterContext';
 
 export default function Chapter() {
-  const [chapters, setChapters] = useState([]);
+  const { chapters, isLoading, error } = useChapters();
 
-  useEffect(() => {
-    const q = query(collection(db, 'chapters'));
-    onSnapshot(q, (querySnapshot) => {
-      const arr = [];
-      querySnapshot.forEach((doc) => {
-        arr.push({ ...doc.data(), id: doc.id });
-      });
-      setChapters(arr);
-    });
-  }, []);
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div

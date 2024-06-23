@@ -5,7 +5,7 @@ import CustomButton from '../button/CustomButton';
 
 function TopBar() {
   return (
-    <div className='flex justify-between items-center mb-6 text-black'>
+    <div className='flex justify-between items-center text-black'>
       <BackButton />
       <HeartIndicator heartNumber={2} />
       <CustomButton

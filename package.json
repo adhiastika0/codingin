@@ -11,11 +11,13 @@
   "dependencies": {
     "@blockly/dev-tools": "^8.0.2",
     "@blockly/zoom-to-fit": "^6.0.2",
+    "ai": "^3.0.35",
     "blockly": "^11.1.0",
     "cookies-next": "^4.1.1",
-    "ai": "^3.0.35",
+    "esprima": "^4.0.1",
     "firebase": "^10.11.0",
     "firebase-tools": "^13.7.3",
+    "js-interpreter": "^5.1.2",
     "next": "14.2.1",
     "openai": "^4.39.0",
     "react": "^18",
@@ -26,6 +28,7 @@
     "zod": "^3.23.5"
   },
   "devDependencies": {
+    "@types/esprima": "^4.0.6",
     "@types/react": "^18.3.3",
     "eslint": "^8",
     "eslint-config-next": "14.2.1",
