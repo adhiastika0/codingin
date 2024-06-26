@@ -453,7 +453,6 @@ export const toolboxJson = {
           kind: 'label',
           text: '',
         },
-
         {
           kind: 'BLOCK',
           type: 'text_print',
@@ -682,3 +681,5 @@ export const toolboxJson = {
     },
   ],
 };
+
+export const rotateConnector = [0, 0, 180, 180, 239, 239, 60, 60];

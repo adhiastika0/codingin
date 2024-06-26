@@ -1,6 +1,7 @@
 'use client';
 
 import { db } from '@/firebase/clientApp';
+import { addChapter } from '@/lib/Chapter';
 import { getUserByCookies } from '@/lib/Users';
 import { collection } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
@@ -9,6 +10,7 @@ export default function Home() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    addChapter();
     const fetchUserCollection = async () => {
       const userRef = collection(db, 'users');
 

@@ -11,7 +11,11 @@ import {
 export default async function HealthUpdater() {
   try {
     const usersCollectionRef = collection(db, 'users');
-    const q = query(usersCollectionRef, where('health', '<', 5));
+    const q = query(
+      usersCollectionRef,
+      where('health', '>=', 0),
+      where('health', '<', 5)
+    );
     const usersSnapshot = await getDocs(q);
 
     const updatePromises = usersSnapshot.docs.map((userDoc) => {

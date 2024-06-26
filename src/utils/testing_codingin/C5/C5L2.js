@@ -1,30 +1,24 @@
 import { parseScript } from 'esprima';
 
-// Fungsi untuk memeriksa apakah user code memenuhi syarat
-async function checkCode(userCode, testCases, expected_statement) {
+async function C5L2(userCode, testCases) {
   try {
-    // Parse user code menggunakan esprima
     const ast = parseScript(userCode);
-    // Flag untuk menandai apakah ada statement if else
-    let ifElseFound = false;
+    let statement = false;
 
-    // Cek setiap node di AST
     ast.body.forEach((node) => {
-      // Jika node merupakan IfStatement, set ifElseFound menjadi true
-      if (node.type === expected_statement) {
-        ifElseFound = true;
+      if (node.type === 'IfStatement') {
+        statement = true;
       }
     });
 
-    // Jika tidak ditemukan statement if else, kembalikan pesan error
-    if (!ifElseFound) {
+    if (!statement) {
       return {
         success: false,
-        message: `Program harus mengandung ${expected_statement}`,
+        message: `Program harus mengandung balok If Else`,
       };
     }
 
-    let allTestsPassed = true;
+    let allTestsPassed = false;
     let testResults = {};
 
     testCases.forEach((testCase) => {
@@ -35,21 +29,18 @@ async function checkCode(userCode, testCases, expected_statement) {
       };
 
       try {
-        // Ganti nilai Uang di dalam userCode dengan nilai dari testCase.Uang
         const modifiedCode = userCode.replace(
-          /Uang\s*=\s*\d+/g,
-          `Uang = ${testCase.input}`
+          /Umur\s*=\s*\d+/g,
+          `Umur = ${testCase.input}`
         );
 
-        // Jalankan user code yang telah dimodifikasi menggunakan eval
         eval(modifiedCode);
 
-        // Mengembalikan console.log ke fungsi aslinya
         console.log = originalConsoleLog;
 
-        // Memeriksa output hanya berasal dari if else statement
         const expectedOutput = testCase.output;
-        const success = output === expectedOutput;
+        const actualOutput = output.toString().toLowerCase();
+        const success = actualOutput === expectedOutput;
 
         testResults[testCase.input] = {
           success,
@@ -80,11 +71,9 @@ async function checkCode(userCode, testCases, expected_statement) {
       return {
         success: false,
         message: 'Terdapat kesalahan dalam satu atau lebih tes',
-        testResults,
       };
     }
   } catch (error) {
-    // Tangani kesalahan parsing user code
     return {
       success: false,
       message: 'Terjadi kesalahan: ' + error.message,
@@ -92,4 +81,4 @@ async function checkCode(userCode, testCases, expected_statement) {
   }
 }
 
-export { checkCode };
+export default C5L2;

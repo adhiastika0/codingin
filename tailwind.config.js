@@ -30,10 +30,11 @@ module.exports = {
         card: '0px 6px 0px 0px #ABABAB',
         'button-blue': '0px 6px 0px 0px #0291D8',
         'button-gray': '0px 6px 0px 0px #BEBBBB',
+        'draggable-gray': '0px 2px 0px 0px #BEBBBB',
         'button-green': '0px 6px 0px 0px #0FA34E',
-        "biru-gradient": "linear-gradient(180deg, #24B9FF 0%, #17A2FF 100%)",
-        "biru-gradient-hover": "linear-gradient(180deg, #0D9FE3 0%, #17A2FF 100%)",
-
+        'biru-gradient': 'linear-gradient(180deg, #24B9FF 0%, #17A2FF 100%)',
+        'biru-gradient-hover':
+          'linear-gradient(180deg, #0D9FE3 0%, #17A2FF 100%)',
       },
       // colors: {
       //   biru: '#18A4FF',

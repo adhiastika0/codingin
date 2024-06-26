@@ -4,11 +4,11 @@ import Image from 'next/image';
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
-function BackButton({ children }) {
+function BackButton({ children, style }) {
   const router = useRouter();
 
   return (
-    <div className='flex gap-4 items-center justify-start w-[172px]'>
+    <div className={`flex gap-4 items-center justify-start ${style}`}>
       <button className='h-full py-2' onClick={() => router.back()}>
         <Image
           src={'/chevron-left.svg'}

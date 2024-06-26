@@ -130,6 +130,13 @@ text.blocklyText {
   fill: #000 !important;
 }
 
+.blocklySvg,
+.blocklyWorkspace {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
 .blocklyDraggable {
   cursor: grab;
   cursor: -webkit-grab;

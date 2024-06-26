@@ -26,6 +26,7 @@ function Playground({
     const workspace = inject(blocklyDiv.current, {
       ...props,
     });
+
     const zoomToFit = new ZoomToFitControl(workspace);
     zoomToFit.init();
 
@@ -55,18 +56,13 @@ function Playground({
     loadWorkspace();
 
     workspace.addChangeListener(saveWorkspace);
-
-    return () => {
-      workspace.dispose();
-      workspace.removeChangeListener(saveWorkspace);
-    };
   }, [levelId, selectedCodeLanguage, setGeneratedCode]);
 
   return (
     <div
       ref={blocklyDiv}
       id='blocklyDiv'
-      className={`size-full ${style}`}
+      className={`w-full h-full relative ${style}`}
     ></div>
   );
 }

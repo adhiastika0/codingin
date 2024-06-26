@@ -15,7 +15,7 @@ function ResultSection({ style, generatedCode, setResult, result }) {
     });
   }, [generatedCode, setResult]);
 
-  return <pre className={style}>{result}</pre>;
+  return <pre className={`${style} overflow-auto`}>{result}</pre>;
 }
 
 export default ResultSection;

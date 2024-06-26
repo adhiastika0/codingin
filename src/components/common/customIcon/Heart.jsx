@@ -1,23 +1,7 @@
-'use client';
-
-import HealthUpdater from '@/lib/Hearts';
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 function Heart({ available }) {
-  useEffect(() => {
-    const updateHealth = async () => {
-      try {
-        await HealthUpdater();
-      } catch (error) {
-        console.error('Error calling updateHealth API:', error);
-      }
-    };
-
-    const intervalId = setInterval(updateHealth, 0.1 * 60 * 1000);
-
-    return () => clearInterval(intervalId);
-  }, []);
   return (
     <div className='icon-container'>
       {available ? (

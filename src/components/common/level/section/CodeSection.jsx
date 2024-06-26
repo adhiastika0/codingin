@@ -6,7 +6,7 @@ function CodeSection({ generatedCode, style, setSelectedCodeLanguage }) {
   };
 
   return (
-    <div className={`size-full ${style} gap-8`}>
+    <div className={`size-full ${style} gap-8 overflow-auto`}>
       <select title='code-select' onChange={handleSelectedCodeLanguage}>
         <option value='JavaScript'>JavaScript</option>
         <option value='Python'>Python</option>

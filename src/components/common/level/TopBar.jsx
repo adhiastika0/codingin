@@ -3,11 +3,11 @@ import BackButton from '../button/BackButton';
 import HeartIndicator from '../customIcon/HeartIndicator';
 import CustomButton from '../button/CustomButton';
 
-function TopBar() {
+function TopBar({ health }) {
   return (
-    <div className='flex justify-between items-center text-black'>
+    <div className='fixed top-0 left-0 right-0 px-6 py-4 bg-white flex justify-between items-center text-black border-b z-50'>
       <BackButton />
-      <HeartIndicator heartNumber={2} />
+      <HeartIndicator heartNumber={health} />
       <CustomButton
         border={'border-2 border-gray'}
         textColor='text-black'

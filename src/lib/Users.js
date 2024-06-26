@@ -1,8 +1,18 @@
-import { where, getDocs, query } from 'firebase/firestore';
+import {
+  where,
+  getDocs,
+  query,
+  collection,
+  doc,
+  updateDoc,
+} from 'firebase/firestore';
 import { getCookie } from 'cookies-next';
+import { db } from '@/firebase/clientApp';
 
-async function getUserByCookies(usersCollectionRef) {
+async function getUserByCookies() {
   try {
+    const usersCollectionRef = collection(db, 'users');
+
     const userEmail = getCookie('userEmail');
 
     const userQuery = query(
@@ -21,11 +31,31 @@ async function getUserByCookies(usersCollectionRef) {
       throw new Error("User doesn't have account");
     }
 
-    return user;
+    return { id: querySnapshot.docs[0].id, ...user };
   } catch (error) {
     console.error('Error fetching user by cookie:', error);
     return null;
   }
 }
 
-export { getUserByCookies };
+async function decreaseUserHealth(userId, newHealth) {
+  const userRef = doc(db, 'users', userId);
+  await updateDoc(userRef, { health: newHealth });
+}
+
+async function increaseUserXp(userId, newXp) {
+  const userRef = doc(db, 'users', userId);
+  await updateDoc(userRef, { xp: newXp });
+}
+
+async function increaseUserCoin(userId, newCoin) {
+  const userRef = doc(db, 'users', userId);
+  await updateDoc(userRef, { coin: newCoin });
+}
+
+export {
+  getUserByCookies,
+  decreaseUserHealth,
+  increaseUserCoin,
+  increaseUserXp,
+};
