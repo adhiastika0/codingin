@@ -3,7 +3,6 @@ import { parseScript } from 'esprima';
 function C2L1(userCode, testCases) {
   try {
     const ast = parseScript(userCode);
-    console.log(userCode);
     let statement = false;
 
     ast.body.forEach((node) => {
@@ -26,7 +25,6 @@ function C2L1(userCode, testCases) {
     let testResults = {};
 
     testCases.forEach((testCase) => {
-      console.log(testCase.output);
       let output;
       const originalConsoleLog = console.log;
       console.log = (msg) => {
@@ -41,6 +39,7 @@ function C2L1(userCode, testCases) {
         const expectedOutput = testCase.output;
         const actualOutput = output.toString().toLowerCase();
         const success = actualOutput === expectedOutput;
+        console.log(success, actualOutput, expectedOutput);
 
         testResults = {
           success,

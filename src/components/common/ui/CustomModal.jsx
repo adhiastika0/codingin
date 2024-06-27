@@ -1,33 +1,33 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactModal from 'react-modal';
 
 function CustomModal({ isOpen, closeModal, type, body }) {
+  useEffect(() => {
+    ReactModal.setAppElement('.__className_aaf875'); // Set the app element to the root div in Next.js
+  }, []);
+
+  const modalTitle = {
+    info: 'Info',
+    success: 'Success',
+    failed: 'Failed',
+  };
+
   return (
     <ReactModal
       isOpen={isOpen}
       onRequestClose={closeModal}
-      className='fixed inset-0 flex items-center justify-center z-50'
-      overlayClassName='fixed inset-0 bg-black bg-opacity-50'
+      className='absolute w-1/3 h-1/3 bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 shadow-lg rounded-lg'
     >
-      <div className='bg-white w-1/3 max-w-lg rounded-lg shadow-lg p-6'>
-        <div className='flex justify-between items-center border-b pb-3'>
-          {type === 'info' && <h2>Information</h2>}
-          {type === 'failed' && <h2>Gagal</h2>}
-          {type === 'success' && <h2>Berhasil</h2>}
+      <div className='p-6'>
+        <div className='flex justify-between items-center'>
+          <h3 className='text-xl font-semibold'>{modalTitle[type]}</h3>
           <button onClick={closeModal} className='focus:outline-none'>
-            <Image
-              src='/cross.svg'
-              alt='close icon for codingin'
-              width={24}
-              height={24}
-              className='hover:opacity-75 transition-opacity duration-200'
-            />
+            <Image src='/cross.svg' alt='Close icon' width={24} height={24} />
           </button>
         </div>
         <div className='mt-4'>
-          {/* Add your modal content here */}
-          <h3 className='text-gray-600'>{body}</h3>
+          <p className='text-gray-600'>{body}</p>
         </div>
       </div>
     </ReactModal>
