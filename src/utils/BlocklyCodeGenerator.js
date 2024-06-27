@@ -21,16 +21,16 @@ export function BlocklyCodeGenerator(workspace, selectedCodeLanguage) {
   javascript = code;
 
   switch (selectedCodeLanguage) {
-    case 'Python':
+    case 'python':
       code = pythonGenerator.workspaceToCode(workspace);
       break;
-    case 'PHP':
+    case 'php':
       code = phpGenerator.workspaceToCode(workspace);
       break;
-    case 'Lua':
+    case 'lua':
       code = luaGenerator.workspaceToCode(workspace);
       break;
-    case 'Dart':
+    case 'dart':
       code = dartGenerator.workspaceToCode(workspace);
       break;
   }

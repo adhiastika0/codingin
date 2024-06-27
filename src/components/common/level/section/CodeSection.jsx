@@ -1,6 +1,8 @@
 import React from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import github from 'react-syntax-highlighter/dist/cjs/styles/hljs/github';
 
-function CodeSection({ generatedCode, style, setSelectedCodeLanguage }) {
+function CodeSection({ selectedCodeLanguage, generatedCode, style, setSelectedCodeLanguage }) {
   const handleSelectedCodeLanguage = (e) => {
     setSelectedCodeLanguage(e.target.value);
   };
@@ -8,13 +10,20 @@ function CodeSection({ generatedCode, style, setSelectedCodeLanguage }) {
   return (
     <div className={`size-full ${style} gap-8 overflow-auto`}>
       <select title='code-select' onChange={handleSelectedCodeLanguage}>
-        <option value='JavaScript'>JavaScript</option>
-        <option value='Python'>Python</option>
-        <option value='PHP'>PHP</option>
-        <option value='Lua'>Lua</option>
-        <option value='Dart'>Dart</option>
+        <option value='javascript'>JavaScript</option>
+        <option value='python'>Python</option>
+        <option value='php'>PHP</option>
+        <option value='lua'>Lua</option>
+        <option value='dart'>Dart</option>
       </select>
-      <pre>{generatedCode[0]}</pre>
+      <SyntaxHighlighter
+        language={selectedCodeLanguage}
+        style={github}
+        showLineNumbers={true}
+        customStyle={{ margin: '0' }}
+      >
+        {generatedCode[0]}
+      </SyntaxHighlighter>
     </div>
   );
 }

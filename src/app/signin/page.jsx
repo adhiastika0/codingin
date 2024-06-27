@@ -11,6 +11,8 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db, auth } from '@/firebase/clientApp';
 import CustomButton from '@/components/button';
 import { setCookie } from 'cookies-next';
+import { ubuntu } from '@/app/fonts/font';
+
 
 export default function Signup() {
   const router = useRouter();
@@ -155,14 +157,14 @@ export default function Signup() {
             alt="Logo Codingin"
             priority
           />
-          <p className="text-2xl">Codingin</p>
+          <p className={`${ubuntu.className} text-2xl font-bold`}>Codingin</p>
         </div>
         <p className="font-bold">Masuk Akun Codingin</p>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <label className="text-sm font-bold">Email</label>
             <input
-              className="flex border-abugelap justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
+              className="flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
               type="email"
               placeholder="Masukkan Email"
               value={email}
@@ -172,14 +174,14 @@ export default function Signup() {
           <div className="flex flex-col gap-2">
             <label className="text-sm font-bold">Password</label>
             <input
-              className="flex border-abugelap justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
+              className="flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
               type="password"
               placeholder="Masukkan Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <a
-              className="text-biru text-right text-xs font-bold"
+              className="text-blue text-right text-xs font-bold"
               href="/forgot-password"
             >
               Lupa Password?
@@ -189,8 +191,8 @@ export default function Signup() {
           {showError()}
 
           <CustomButton
-            backgroundColor={'bg-biru-gradient'}
-            shadowColor={'shadow-bayangan_biru'}
+            backgroundColor={'bg-gradient-blue'}
+            shadowColor={'shadow-button-blue'}
             onClick={handleSignIn}
           >
             Masuk Akun
@@ -198,19 +200,19 @@ export default function Signup() {
 
           <p className="text-center text-xs font-bold">
             Belum Punya Akun?{' '}
-            <a className="text-biru" href="/signup">
+            <a className="text-blue" href="/signup">
               Daftar
             </a>
           </p>
         </div>
         <div className="flex items-center self-stretch gap-2">
-          <hr className="flex w-full h-px border-abugelap" />
-          <p className="text-abugelap">atau</p>
-          <hr className="w-full h-px border-abugelap" />
+          <hr className="flex w-full h-px border-darkgray" />
+          <p className="text-darkgray">atau</p>
+          <hr className="w-full h-px border-darkgray" />
         </div>
         <button
           onClick={handleSignInWithGoogle}
-          className="flex border-abugelap font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border hover:bg-abuterang active:bg-abuterang"
+          className="flex border-darkgray font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border hover:bg-lightgray active:bg-lightgray"
         >
           <Image
             src="/google.svg"

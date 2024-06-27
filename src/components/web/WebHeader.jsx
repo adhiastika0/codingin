@@ -20,9 +20,9 @@ function WebHeader() {
     fetchUserCollection();
   }, []);
   return (
-    <div className='web hidden lg:flex lg:fixed w-full z-[9999] lg:h-fit h-0 bg-white border-b border-lightgray'>
-      <div className='flex flex-col size-full'>
-        <div className='flex justify-between border-b px-6 pt-6 pb-4 border-lightgray'>
+    <div className="web hidden lg:flex lg:fixed w-full z-[100] lg:h-fit h-0 bg-white border-b border-lightgray">
+      <div className="flex flex-col size-full">
+        <div className="flex justify-between border-b px-6 pt-6 pb-4 border-lightgray">
           <CustomLogoWithText />
         </div>
         <div className='flex justify-center items-center py-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 xl:gap-14'>

@@ -2,6 +2,9 @@
 
 import { executeJavaScript } from '@/vendor/JS-Interpreter-master/demos/node';
 import { useEffect } from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import github from 'react-syntax-highlighter/dist/cjs/styles/hljs/github';
+
 
 function ResultSection({ style, generatedCode, setResult, result }) {
   useEffect(() => {
@@ -15,7 +18,16 @@ function ResultSection({ style, generatedCode, setResult, result }) {
     });
   }, [generatedCode, setResult]);
 
-  return <pre className={`${style} overflow-auto`}>{result}</pre>;
+  return (
+    <SyntaxHighlighter
+      language="javascript"
+      style={github}
+      showLineNumbers={true}
+      customStyle={{ margin: '0' }}
+    >
+      {result}
+    </SyntaxHighlighter>
+  );
 }
 
 export default ResultSection;

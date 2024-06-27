@@ -51,12 +51,11 @@ if (Umur < 13) {
 
   return (
     <div className="relative">
-      <h1 className="text-xl text-black">tes1233</h1>
       <Modal isVisible={showLensaDeveloper}>
         <div className="flex flex-col h-dvh">
-          <div className="flex p-4 justify-between items-center border-b border-abuterang">
+          <div className="flex p-4 justify-between items-center border-b border-lightgray">
             <div className="flex items-center gap-4">
-              <div className="inline-flex p-2 items-center rounded-md border border-abugelap ">
+              <div className="inline-flex p-2 items-center rounded-md border border-darkgray ">
                 <Image
                   src="/lens.png"
                   width={18}
@@ -85,14 +84,14 @@ if (Umur < 13) {
           </div>
           <form
             onSubmit={handleSubmit}
-            className="flex items-end w-full justify-between bottom-0 p-4 gap-2 border-t border-abuterang"
+            className="flex items-end w-full justify-between bottom-0 p-4 gap-2 border-t border-lightgray"
             ref={formRef}
           >
             <AutoAdjustTextarea value={input} onChange={handleInputChange} />
             <CustomButton
               type="submit"
-              backgroundColor={'bg-biru-gradient'}
-              shadowColor={'shadow-bayangan_biru'}
+              backgroundColor={'bg-gradient-blue'}
+              shadowColor={'shadow-button-blue'}
             >
               <Image src="/play.svg" width={18} height={18} alt="Cross" />
             </CustomButton>

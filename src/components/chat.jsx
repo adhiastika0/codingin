@@ -2,7 +2,6 @@ import React from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import Markdown from 'react-markdown';
-import LoadingSpinner from './loading';
 
 const ChatBubble = ({
   key,
@@ -31,7 +30,7 @@ const ChatBubble = ({
         // Tambahkan blok kode ke dalam penampung
         processedBlocks.push(
           <div key={`code-${index}`}>
-            <div className="bg-biru font-bold text-white px-4 py-2">
+            <div className="bg-blue font-bold text-white px-4 py-2">
               {language}
             </div>
             <SyntaxHighlighter
@@ -96,8 +95,8 @@ const ChatBubble = ({
         <span
           className={`flex py-2 px-4 border rounded-md font-bold text-sm ${
             role === 'user'
-              ? 'border-biru text-biru'
-              : 'border-green-500 text-hitam'
+              ? 'border-blue text-blue'
+              : 'border-green text-black'
           }`}
         >
           {role === 'user' ? '👤 User' : '🤖 Ai Mentor'}

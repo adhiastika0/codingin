@@ -8,6 +8,8 @@ import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth, db } from '@/firebase/clientApp'; // Assuming db is your Firestore instance
 import CustomButton from '@/components/button';
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
+import { ubuntu } from '@/app/fonts/font';
+
 
 async function setUser(username, email) {
   try {
@@ -168,14 +170,14 @@ export default function Signup() {
             alt="Logo Codingin"
             priority
           />
-          <p className="text-2xl">Codingin</p>
+          <p className={`${ubuntu.className} text-2xl font-bold`}>Codingin</p>
         </div>
         <p className="font-bold">Daftar Akun Codingin</p>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <label className="text-sm font-bold">Username</label>
             <input
-              className="flex border-abugelap justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
+              className="flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
               type="text"
               placeholder="Masukkan Username"
               value={username}
@@ -185,7 +187,7 @@ export default function Signup() {
           <div className="flex flex-col gap-2">
             <label className="text-sm font-bold">Email</label>
             <input
-              className="flex border-abugelap justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
+              className="flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
               type="email"
               placeholder="Masukkan Email"
               value={email}
@@ -195,7 +197,7 @@ export default function Signup() {
           <div className="flex flex-col gap-2">
             <label className="text-sm font-bold">Password</label>
             <input
-              className="flex border-abugelap justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
+              className="flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
               type="password"
               placeholder="Masukkan Password"
               value={password}
@@ -206,8 +208,8 @@ export default function Signup() {
           <div className="w-[280px]">{showError()}</div>
 
           <CustomButton
-            backgroundColor={'bg-biru-gradient'}
-            shadowColor={'shadow-bayangan_biru'}
+            backgroundColor={'bg-gradient-blue'}
+            shadowColor={'shadow-button-blue'}
             onClick={handleSignUp}
           >
             Buat Akun
@@ -215,19 +217,19 @@ export default function Signup() {
 
           <p className="text-center text-xs font-bold">
             Sudah Punya Akun?{' '}
-            <a className="text-biru" href="/signin">
+            <a className="text-blue" href="/signin">
               Masuk
             </a>
           </p>
         </div>
         <div className="flex items-center self-stretch gap-2">
-          <hr className="flex w-full h-px border-abugelap" />
-          <p className="text-abugelap">atau</p>
-          <hr className="w-full h-px border-abugelap" />
+          <hr className="flex w-full h-px border-darkgray" />
+          <p className="text-darkgray">atau</p>
+          <hr className="w-full h-px border-darkgray" />
         </div>
         <button
           onClick={handleSignInWithGoogle}
-          className="flex border-abugelap font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border hover:bg-abuterang active:bg-abuterang"
+          className="flex border-darkgray font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border hover:bg-lightgray active:bg-lightgray"
         >
           <Image
             src="/google.svg"

@@ -14,21 +14,10 @@ function LevelSection({
   setGeneratedCode,
   setResult,
   result,
+  selectedCodeLanguage,
+  setSelectedCodeLanguage
 }) {
   const [activeButton, setActiveButton] = useState('block');
-  const [selectedCodeLanguage, setSelectedCodeLanguage] =
-    useState('JavaScript');
-  // const [imageUrl, setImageUrl] = useState('');
-
-  // useEffect(() => {
-  //   if (level) {
-  //     const fetchImageUrl = async () => {
-  //       const result = await getLevelImageUrl(level);
-  //       setImageUrl(result);
-  //     };
-  //     fetchImageUrl();
-  //   }
-  // }, [level]);
 
   const handleSelectedCodeLanguage = (value) => {
     setSelectedCodeLanguage(value);
@@ -91,6 +80,7 @@ function LevelSection({
             generatedCode={generatedCode}
             style={activeButton === 'code' ? 'block' : 'hidden'}
             setSelectedCodeLanguage={handleSelectedCodeLanguage}
+            selectedCodeLanguage={selectedCodeLanguage}
           />
           <ResultSection
             generatedCode={generatedCode}

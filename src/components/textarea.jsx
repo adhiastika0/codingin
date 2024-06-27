@@ -25,7 +25,7 @@ const AutoAdjustTextarea = ({ value = '', onChange }) => {
   return (
     <textarea
       ref={textareaRef}
-      className="flex-grow border-abugelap rounded-lg border justify-center items-center py-2 px-4 text-xs resize-none overflow-auto"
+      className="flex-grow border-darkgray rounded-lg border justify-center items-center py-2 px-4 text-xs resize-none overflow-auto"
       placeholder="Apa yang ingin anda tanyakan?"
       value={value}
       onChange={handleChange}
