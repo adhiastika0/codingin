@@ -6,19 +6,19 @@ import CustomLink from '@/components/common/button/CustomLink';
 import { useChapters } from '@/hooks/ChapterContext';
 import { getImageUrl } from '@/utils/getImageUrl';
 import variablePic from '../../../../public/chap_variable.svg';
+import { addChapter } from '@/lib/Chapter';
 
 export default function Chapter() {
   const { chapters, isLoading, error } = useChapters();
   const [imageUrls, setImageUrls] = useState({});
 
   useEffect(() => {
+    addChapter();
     const fetchImageUrls = async () => {
       const urls = {};
       for (const chapter of chapters) {
-        if (chapter.cover) {
-          const url = await getImageUrl(chapter.cover);
-          urls[chapter.id] = url;
-        }
+        const url = await getImageUrl(chapter.id);
+        urls[chapter.id] = url;
       }
       setImageUrls(urls);
     };
@@ -44,14 +44,14 @@ export default function Chapter() {
         >
           <Image
             src={imageUrls[chapter.id] || variablePic}
-            alt={`chapter ${index + 1} cover`}
+            alt={`chapter ${chapter.id} cover`}
             width={313}
             height={167}
             priority
             className='rounded-lg w-auto h-auto'
           />
           <div className='flex flex-col gap-4 p-4 border-t border-darkgray '>
-            <h2 className='font-bold text-blue'>Chapter {index + 1}</h2>
+            <h2 className='font-bold text-blue'>Chapter {chapter.index}</h2>
             <div>
               <h2 className='font-bold'>{chapter.title}</h2>
               <h3 className='line-clamp-2 text-ellipsis overflow-hidden'>
