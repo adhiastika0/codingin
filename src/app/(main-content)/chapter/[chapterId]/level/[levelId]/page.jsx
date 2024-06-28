@@ -57,6 +57,7 @@ function Level({ params }) {
     };
 
     const loadCheckCodeFunction = async () => {
+      console.log(chapterId, levelId);
       const checkCodeFunction = await importCheckCode(chapterId, levelId);
       setCheckCode(() => checkCodeFunction);
     };

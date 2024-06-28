@@ -1,7 +1,7 @@
 import { parseScript } from 'esprima';
 
 // Fungsi untuk memeriksa apakah user code memenuhi syarat
-async function C5L1(userCode, testCases) {
+async function C6L1(userCode, testCases) {
   try {
     const ast = parseScript(userCode);
     let statement = false;
@@ -39,8 +39,9 @@ async function C5L1(userCode, testCases) {
 
         console.log = originalConsoleLog;
 
-        const expectedOutput = testCase.output;
+        const expectedOutput = testCase.output.trim();
         const actualOutput = output.toString().toLowerCase();
+        console.log(expectedOutput, actualOutput);
         const success = actualOutput === expectedOutput;
 
         testResults[testCase.input] = {
@@ -83,4 +84,4 @@ async function C5L1(userCode, testCases) {
   }
 }
 
-export default C5L1;
+export default C6L1;
