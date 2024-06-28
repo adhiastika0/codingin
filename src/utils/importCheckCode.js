@@ -1,5 +1,6 @@
 const importCheckCode = async (chapterId, levelId) => {
   try {
+    console.log(chapterId, levelId);
     const func = await import(
       `@/utils/testing_codingin/${chapterId}/${levelId}`
     );
