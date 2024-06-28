@@ -58,7 +58,7 @@ export default function Signup() {
         const userEmail = userCredential.user.email;
         setCookie('userEmail', userEmail);
         alert('berhasil login');
-        router.push('/beranda');
+        router.push('/chapter');
 
         getUserCollection(userEmail)
           .then((querySnapshot) => {
@@ -94,7 +94,7 @@ export default function Signup() {
       setCookie('userEmail', user.email);
 
       // Lakukan redirect atau operasi lainnya
-      router.push('/home');
+      router.push('/chapter');
 
       getUserCollection(user.email)
         .then((querySnapshot) => {
