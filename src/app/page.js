@@ -1,8 +1,7 @@
-import Image from 'next/image';
 import { db } from '@/firebase/clientApp';
 import { collection, getDocs } from 'firebase/firestore';
 
-export default async function Home() {
+export default async function App() {
   const users = await getUser();
 
   return (
@@ -17,9 +16,7 @@ export default async function Home() {
         </div>
       ))}
       <ol>
-        <li>
-          1. aku gg
-        </li>
+        <li>1. aku gg</li>
       </ol>
     </div>
   );

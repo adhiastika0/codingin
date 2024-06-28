@@ -14,6 +14,13 @@ export function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/home'],
-  // matcher: ['/home', '/chapter/:path*'],
+  matcher: [
+    '/level/:path*',
+    '/module/:path*',
+    '/leaderboard/:path*',
+    '/hadiah-harian/:path*',
+    '/misi-mingguan/:path*',
+    '/profil/:path*',
+    '/setting/:path*',
+  ],
 };

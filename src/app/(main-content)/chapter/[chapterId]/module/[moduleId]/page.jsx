@@ -42,7 +42,7 @@ function Module({ params }) {
     return <div>Chapter not found</div>;
   }
 
-  const contents = chapter.modules.contents || [];
+  const modules = chapter.modules || [];
   return (
     <section className='flex flex-col gap-4'>
       <BackButton>
@@ -59,44 +59,54 @@ function Module({ params }) {
           title='Video for learn --'
           src=''
           allowFullScreen
-          className='rounded-lg m-auto w-[100%] min-h-52 lg:w-[86.5%] lg:min-h-80 md:w-[80%] md:min-h-92 sm:min-h-80 xl:w-[91.5%] xl:min-h-[500px] min-[1440px]:min-h-[512px]'
+          className='rounded-lg m-auto w-[100%] min-h-52 lg:w-[86.5%] lg:min-h-80 md:w-[80%] md:min-h-92 sm:min-h-80 xl:w-[91.5%] xl:min-h-[500px] min-[1440px]:min-h-[512px] bg-lightgray'
         />
       </div>
-      <div className='flex flex-col gap-1 w-full'>
+      <div className='flex flex-col gap-2 w-full'>
         <h2 className='text-blue'>Modul Ajar Bacaan</h2>
-        {contents.map((content, index) => (
-          <div key={index} className='w-full'>
-            <h3 className='text-pretty'>{content.body}</h3>
-            {content.image && (
-              <div className='m-auto'>
-                {typeof content.image === 'string' &&
-                  imageUrls[content.image] && (
-                    <Image
-                      src={imageUrls[content.image]}
-                      alt={`Image for module ${content.image}`}
-                      width={150}
-                      height={150}
-                      className='m-auto'
-                    />
-                  )}
-                {Array.isArray(content.image) &&
-                  content.image.map((img, imgIndex) => (
-                    <React.Fragment key={`${img}-${imgIndex}`}>
-                      {imageUrls[img] && (
-                        <Image
-                          src={imageUrls[img]}
-                          alt={`Image for module ${img}`}
-                          width={150}
-                          height={150}
-                          className='m-auto'
-                        />
-                      )}
-                    </React.Fragment>
-                  ))}
-              </div>
-            )}
-          </div>
-        ))}
+        <h3 className='text-pretty text-justify'>{modules.desc}</h3>
+        <h3 className='text-pretty text-justify'>{modules.opening}</h3>
+        <ol className='list-inside pr-6'>
+          {modules.contents.map((content, index) => (
+            <div key={index} className='w-full flex flex-col gap-2 mb-6 ml-6'>
+              {content.title ? (
+                <li className='text-pretty text-justify'>{content.title}</li>
+              ) : (
+                ''
+              )}
+              <h3 className='text-pretty text-justify'>{content.body}</h3>
+              {content.image && (
+                <div className='w-full m-auto bg-[url(/background_jitter.svg)] bg-clip-border bg-contain flex border p-10'>
+                  {typeof content.image === 'string' &&
+                    imageUrls[content.image] && (
+                      <Image
+                        src={imageUrls[content.image]}
+                        alt={`Image for module ${content.image}`}
+                        width={300}
+                        height={200}
+                        className='m-auto size-auto'
+                      />
+                    )}
+                  {Array.isArray(content.image) &&
+                    content.image.map((img, imgIndex) => (
+                      <React.Fragment key={`${img}-${imgIndex}`}>
+                        {imageUrls[img] && (
+                          <Image
+                            src={imageUrls[img]}
+                            alt={`Image for module ${img}`}
+                            width={300}
+                            height={200}
+                            className='m-auto size-auto'
+                          />
+                        )}
+                      </React.Fragment>
+                    ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </ol>
+        <h3 className='text-pretty'>{modules.ending}</h3>
       </div>
     </section>
   );

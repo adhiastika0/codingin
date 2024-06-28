@@ -6,8 +6,7 @@ import { usePathname } from 'next/navigation';
 
 function SidebarItemContainer() {
   const sidebarItems = [
-    { icon: <h1>🏠</h1>, text: 'Beranda', href: '/home' },
-    { icon: <h1>📚</h1>, text: 'Latihan', href: '/chapter' },
+    { icon: <h1>🏠</h1>, text: 'Latihan', href: '/chapter' },
     { icon: <h1>🏅</h1>, text: 'Leaderboard', href: '/leaderboard' },
     { icon: <h1>📆</h1>, text: 'Hadiah Harian', href: '/hadiah-harian' },
     { icon: <h1>🎯</h1>, text: 'Misi Mingguan', href: '/misi-mingguan' },
