@@ -2,7 +2,6 @@ import Image from 'next/image';
 import React from 'react';
 
 function Connector({ rotate, x, y }) {
-  console.log(rotate);
   const index = x;
   let offset = 'left-4';
   if (index == 3) {

@@ -17,7 +17,6 @@ function Setting() {
     try {
       await signOut(auth);
       deleteCookie('userEmail');
-      console.log('User signed out');
       router.push('/signin');
     } catch (error) {
       console.error('Error signing out: ', error);

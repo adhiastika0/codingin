@@ -22,7 +22,6 @@ async function getUserByCookies() {
     const querySnapshot = await getDocs(userQuery);
 
     if (querySnapshot.empty) {
-      console.log('No matching user found');
       return null;
     }
 

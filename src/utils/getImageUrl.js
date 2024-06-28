@@ -17,7 +17,6 @@ const getModuleImagesUrl = async (chapter) => {
   for (const content of chapter.modules.contents) {
     if (content.image) {
       if (typeof content.image === 'string') {
-        console.log(content.image);
         const imageRef = ref(storage, `chapter/${content.image}.png`);
         const url = await getDownloadURL(imageRef);
         newImageUrls[content.image] = url;

@@ -13,7 +13,6 @@ import CustomButton from '@/components/button';
 import { setCookie } from 'cookies-next';
 import { ubuntu } from '@/app/fonts/font';
 
-
 export default function Signup() {
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -57,7 +56,6 @@ export default function Signup() {
       .then((userCredential) => {
         // Signed in
         const userEmail = userCredential.user.email;
-        console.log(userEmail);
         setCookie('userEmail', userEmail);
         alert('berhasil login');
         router.push('/beranda');
@@ -65,14 +63,9 @@ export default function Signup() {
         getUserCollection(userEmail)
           .then((querySnapshot) => {
             if (querySnapshot) {
-              console.log('User collection:', querySnapshot);
               querySnapshot.forEach((doc) => {
                 // Akses data dokumen
                 const docData = doc.data();
-
-                // Tampilkan nilai dari key 'email' dan 'rank'
-                console.log('Email:', docData.email);
-                console.log('Rank:', docData.rank);
 
                 // Lakukan operasi lain dengan data dokumen jika diperlukan
               });
@@ -87,7 +80,6 @@ export default function Signup() {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
         setError(
           'Terdapat kesalahan pada email atau password. Silahkan coba lagi'
         );
@@ -99,10 +91,7 @@ export default function Signup() {
       const result = await signInWithPopup(auth, provider);
       // Autentikasi berhasil, lakukan sesuatu seperti redirect atau menampilkan pesan sukses
       const user = result.user;
-      console.log('Login berhasil dengan Google:', user);
       setCookie('userEmail', user.email);
-
-      console.log(user.email);
 
       // Lakukan redirect atau operasi lainnya
       router.push('/home');
@@ -110,14 +99,9 @@ export default function Signup() {
       getUserCollection(user.email)
         .then((querySnapshot) => {
           if (querySnapshot) {
-            console.log('User collection:', querySnapshot);
             querySnapshot.forEach((doc) => {
               // Akses data dokumen
               const docData = doc.data();
-
-              // Tampilkan nilai dari key 'email' dan 'rank'
-              console.log('Email:', docData.email);
-              console.log('Rank:', docData.rank);
 
               // Lakukan operasi lain dengan data dokumen jika diperlukan
             });
@@ -138,7 +122,7 @@ export default function Signup() {
   function showError() {
     if (error) {
       return (
-        <p className="flex text-red-600 text-xs font-semibold self-stretch">
+        <p className='flex text-red-600 text-xs font-semibold self-stretch'>
           {error}
         </p>
       );
@@ -147,42 +131,42 @@ export default function Signup() {
   }
 
   return (
-    <div className="App flex flex-col items-center justify-center gap-6 h-screen">
-      <div className="flex flex-col justify-center items-center gap-6 w-[280px]">
-        <div className="flex gap-2">
+    <div className='App flex flex-col items-center justify-center gap-6 h-screen'>
+      <div className='flex flex-col justify-center items-center gap-6 w-[280px]'>
+        <div className='flex gap-2'>
           <Image
-            src="/logo.svg"
+            src='/logo.svg'
             width={37.5}
             height={30}
-            alt="Logo Codingin"
+            alt='Logo Codingin'
             priority
           />
           <p className={`${ubuntu.className} text-2xl font-bold`}>Codingin</p>
         </div>
-        <p className="font-bold">Masuk Akun Codingin</p>
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-bold">Email</label>
+        <p className='font-bold'>Masuk Akun Codingin</p>
+        <div className='flex flex-col gap-4'>
+          <div className='flex flex-col gap-2'>
+            <label className='text-sm font-bold'>Email</label>
             <input
-              className="flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
-              type="email"
-              placeholder="Masukkan Email"
+              className='flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5'
+              type='email'
+              placeholder='Masukkan Email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-bold">Password</label>
+          <div className='flex flex-col gap-2'>
+            <label className='text-sm font-bold'>Password</label>
             <input
-              className="flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
-              type="password"
-              placeholder="Masukkan Password"
+              className='flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5'
+              type='password'
+              placeholder='Masukkan Password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <a
-              className="text-blue text-right text-xs font-bold"
-              href="/forgot-password"
+              className='text-blue text-right text-xs font-bold'
+              href='/forgot-password'
             >
               Lupa Password?
             </a>
@@ -198,27 +182,27 @@ export default function Signup() {
             Masuk Akun
           </CustomButton>
 
-          <p className="text-center text-xs font-bold">
+          <p className='text-center text-xs font-bold'>
             Belum Punya Akun?{' '}
-            <a className="text-blue" href="/signup">
+            <a className='text-blue' href='/signup'>
               Daftar
             </a>
           </p>
         </div>
-        <div className="flex items-center self-stretch gap-2">
-          <hr className="flex w-full h-px border-darkgray" />
-          <p className="text-darkgray">atau</p>
-          <hr className="w-full h-px border-darkgray" />
+        <div className='flex items-center self-stretch gap-2'>
+          <hr className='flex w-full h-px border-darkgray' />
+          <p className='text-darkgray'>atau</p>
+          <hr className='w-full h-px border-darkgray' />
         </div>
         <button
           onClick={handleSignInWithGoogle}
-          className="flex border-darkgray font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border hover:bg-lightgray active:bg-lightgray"
+          className='flex border-darkgray font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border hover:bg-lightgray active:bg-lightgray'
         >
           <Image
-            src="/google.svg"
+            src='/google.svg'
             width={18}
             height={18}
-            alt="Logo Codingin"
+            alt='Logo Codingin'
             priority
           />
           Masuk dengan Google

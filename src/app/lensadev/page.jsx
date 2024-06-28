@@ -16,7 +16,6 @@ export default function Lensa() {
   const formRef = useRef(null);
 
   const handleRecommendedQuestion = (question) => {
-    console.log(question);
     append({ role: 'user', content: question });
   };
 

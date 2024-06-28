@@ -10,7 +10,6 @@ import CustomButton from '@/components/button';
 import { addDoc, collection, getDocs, query, where } from 'firebase/firestore';
 import { ubuntu } from '@/app/fonts/font';
 
-
 async function setUser(username, email) {
   try {
     // Check if a user with the same email already exists
@@ -32,7 +31,6 @@ async function setUser(username, email) {
       xp: 0,
       coin: 0,
     });
-    console.log('Document written with ID: ', docRef.id);
   } catch (error) {
     console.error('Error saving user data:', error);
     throw error; // Propagate the error to handle it in the signup process
@@ -110,7 +108,7 @@ export default function Signup() {
   function showError() {
     if (error) {
       return (
-        <p className="flex text-red-600 text-xs font-semibold self-stretch">
+        <p className='flex text-red-600 text-xs font-semibold self-stretch'>
           {error}
         </p>
       );
@@ -124,7 +122,6 @@ export default function Signup() {
       const result = await signInWithPopup(auth, provider);
       // Authentication successful, proceed with operations like redirect or displaying success message
       const user = result.user;
-      console.log('Login berhasil dengan Google:', user);
 
       // Check if the user's email already exists in Firestore
       const q = query(
@@ -145,7 +142,6 @@ export default function Signup() {
 
       // Retrieve user collection data if needed
       const userData = await getUserCollection(user.email);
-      console.log('User collection:', userData);
     } catch (error) {
       // Handle errors
       console.error('Error saat login dengan Google:', error);
@@ -160,52 +156,52 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6 h-screen">
-      <div className="flex flex-col justify-center items-center gap-6">
-        <div className="flex gap-2">
+    <div className='flex flex-col items-center justify-center gap-6 h-screen'>
+      <div className='flex flex-col justify-center items-center gap-6'>
+        <div className='flex gap-2'>
           <Image
-            src="/logo.svg"
+            src='/logo.svg'
             width={37.5}
             height={30}
-            alt="Logo Codingin"
+            alt='Logo Codingin'
             priority
           />
           <p className={`${ubuntu.className} text-2xl font-bold`}>Codingin</p>
         </div>
-        <p className="font-bold">Daftar Akun Codingin</p>
-        <div className="flex flex-col gap-4">
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-bold">Username</label>
+        <p className='font-bold'>Daftar Akun Codingin</p>
+        <div className='flex flex-col gap-4'>
+          <div className='flex flex-col gap-2'>
+            <label className='text-sm font-bold'>Username</label>
             <input
-              className="flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
-              type="text"
-              placeholder="Masukkan Username"
+              className='flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5'
+              type='text'
+              placeholder='Masukkan Username'
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-bold">Email</label>
+          <div className='flex flex-col gap-2'>
+            <label className='text-sm font-bold'>Email</label>
             <input
-              className="flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
-              type="email"
-              placeholder="Masukkan Email"
+              className='flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5'
+              type='email'
+              placeholder='Masukkan Email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-bold">Password</label>
+          <div className='flex flex-col gap-2'>
+            <label className='text-sm font-bold'>Password</label>
             <input
-              className="flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5"
-              type="password"
-              placeholder="Masukkan Password"
+              className='flex border-darkgray justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border py-3 px-2.5'
+              type='password'
+              placeholder='Masukkan Password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          <div className="w-[280px]">{showError()}</div>
+          <div className='w-[280px]'>{showError()}</div>
 
           <CustomButton
             backgroundColor={'bg-gradient-blue'}
@@ -215,27 +211,27 @@ export default function Signup() {
             Buat Akun
           </CustomButton>
 
-          <p className="text-center text-xs font-bold">
+          <p className='text-center text-xs font-bold'>
             Sudah Punya Akun?{' '}
-            <a className="text-blue" href="/signin">
+            <a className='text-blue' href='/signin'>
               Masuk
             </a>
           </p>
         </div>
-        <div className="flex items-center self-stretch gap-2">
-          <hr className="flex w-full h-px border-darkgray" />
-          <p className="text-darkgray">atau</p>
-          <hr className="w-full h-px border-darkgray" />
+        <div className='flex items-center self-stretch gap-2'>
+          <hr className='flex w-full h-px border-darkgray' />
+          <p className='text-darkgray'>atau</p>
+          <hr className='w-full h-px border-darkgray' />
         </div>
         <button
           onClick={handleSignInWithGoogle}
-          className="flex border-darkgray font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border hover:bg-lightgray active:bg-lightgray"
+          className='flex border-darkgray font-bold justify-center items-center w-[280px] h-[40px] gap-3 rounded-lg border hover:bg-lightgray active:bg-lightgray'
         >
           <Image
-            src="/google.svg"
+            src='/google.svg'
             width={18}
             height={18}
-            alt="Logo Codingin"
+            alt='Logo Codingin'
             priority
           />
           Daftar dengan Google
