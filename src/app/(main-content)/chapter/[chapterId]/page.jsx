@@ -34,7 +34,7 @@ export default function ChapterDetails({ params }) {
   return (
     <>
       <BackButton style={'mb-4'}>
-        <h2>Chapter {chapterIndex + 1}</h2>
+        <h2>Chapter {chapter.index}</h2>
       </BackButton>
       <div className='flex flex-col gap-6 pb-6 bg-[url(/background_jitter.svg)] bg-contain'>
         <div className='flex gap-6 items-center justify-between p-4 shadow-button-gray border border-darkgray rounded-lg bg-white'>

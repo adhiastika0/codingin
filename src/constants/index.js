@@ -686,8 +686,8 @@ export const rotateConnector = [0, 0, 180, 180, 239, 239, 60, 60];
 
 const data = [
   {
-    id: 'c2',
-    index: '2',
+    id: 'c1',
+    index: '1',
     desc: 'Bayangkan kita sedang bermain dengan banyak mainan yang berbeda. Ada boneka, mobil-mobilan, bola, dan banyak lagi. Setiap mainan memiliki bentuk dan cara bermain yang berbeda, bukan? Nah, di dalam dunia pemrograman, tipe data itu seperti mainan kita. Setiap tipe data memiliki peran dan cara kerja yang unik. Tipe data adalah cara kita memberitahu komputer jenis informasi apa yang akan kita gunakan dalam program kita.',
     title: 'Tipe Data',
     modules: {

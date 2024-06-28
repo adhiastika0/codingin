@@ -10,91 +10,71 @@ import {
 
 const addChapter = async () => {
   const docData = {
-    index: '6',
-    title: 'If Else',
-    modules: {
-      id: 'm6',
-      contents: [
-        {
-          body: 'Pengkondisian if (jika) else merupakan lanjutan dari operator kondisi. Pada materi sebelumnya, komputer sudah mengetahui cara membuat keputusan. Namun, berdasarkan keputusan tersebut, belum ada aksi yang dilakukan selanjutnya. Semisal kalian mengetahui jalan di depan sedang banjir. Kita perlu melakukan pengkondisian “Jika jalan didepan banjir, maka saya akan mencari jalan lain, jika tidak banjir, saya akan lanjut berjalan”. Ayo kita pahami blok yang digunakan dalam melakukan pengkondisian if else.',
-          image: '',
-        },
-        {
-          body: 'Gunakan block if else dengan pengkondisian menggunakan operator kondisi. Semisal menggunakan contoh Jika jalan didepan banjir, maka saya akan mencari jalan lain.',
-          image: 'm6/p1',
-        },
-        {
-          body: 'Namun, bagaimana jika perlu mengecek kondisi jika tidak banjir, saya akan lanjut berjalan? Kita perlu menambahkan pengkondisian lain. Tekan tombol bergambar gerigi pada blok if else.',
-          image: 'm6/p2',
-        },
-        {
-          image: 'm6/p3',
-          body: 'Tekan else if jika kondisi selanjutnya diketahui. Karena kita mengetahui kondisi yang perlu di cek adalah “jika tidak hujan” maka kita perlu menggunakan tambahan else if.',
-        },
-        {
-          image: 'm6/p4',
-          body: 'Geser blok else if kebawah block if yang ada pada sebelah kanan.',
-        },
-        {
-          image: 'm6/p5',
-          body: 'Tambahkan kondisi yang diinginkan, dimana pada contoh kali ini adalah “jika tidak banjir, saya lanjut jalan”',
-        },
-        {
-          body: 'Kita bisa tambahkan kondisi lain lagi dengan menekan tombol berbentuk gerigi. Ada 1 block lagi kita perlu pelajari, yaitu else. Block ini biasa digunakan untuk pengkondisian selain yang diharapkan. Contohnya, “Jika banjir, saya cari jalan lain. Selain kondisi itu, saya akan lanjut jalan”. Else tidak memerlukan operator kondisi tambahan seperti else if.',
-          image: ['m6/p6', 'm6/p7'],
-        },
-        {
-          image: '',
-          body: 'Sekarang, kita sudah bisa memberikan instruksi untuk membuat keputusan dan melakukan aksi berdasarkan keputusan tersebut. Hebat kan? Ayo kita kerjakan tantangannya!',
-        },
-      ],
-    },
-    desc: 'Pengkondisian if (jika) else merupakan lanjutan dari operator kondisi. Pada materi sebelumnya, komputer sudah mengetahui cara membuat keputusan. Namun, berdasarkan keputusan tersebut, belum ada aksi yang dilakukan selanjutnya. Semisal kalian mengetahui jalan di depan sedang banjir. Kita perlu melakukan pengkondisian “Jika jalan didepan banjir, maka saya akan mencari jalan lain, jika tidak banjir, saya akan lanjut berjalan”. Ayo kita pahami blok yang digunakan dalam melakukan pengkondisian if else.',
     levels: [
       {
+        id: 'C1L1',
         question:
-          'Saat ini, uang saya adalah 10. Buatkan instruksi pengkondisian Jika saya memiliki Uang sebanyak 10, maka akan tercetak kalimat String “Membeli Nasi Kuning”. Namun, jika Uang tidak sama dengan 10, maka akan tercetak kalimat “Puasa”.',
-        id: 'C6L1',
+          'Cetak tipe data String yang bertuliskan kalimat “Saya Talenta Digital”',
         test_case: [
           {
-            output: 'membeli nasi kuning',
-            input: '123',
-          },
-          {
-            input: '-1',
-            output: 'puasa',
+            output: 'saya talenta digital',
           },
         ],
-        expected_output: 'Membeli Nasi Kuning',
-        expected_statement: 'IfStatement',
-        title: 'Uang I Sangat Much',
+        expected_output: 'Saya Talenta Digital',
+        title: 'Tipe Data String',
       },
       {
-        title: 'Umur Saya',
-        id: 'C6L2',
-        question:
-          'Saat ini, Umur saya adalah 13 tahun. Buatkan instruksi pengkondisian jika Umur saya kurang dari 13, maka akan tercetak kalimat String “Anak-anak”.  Jika Umur saya kurang dari 20, maka akan tercetak kalimat String “Remaja”. Selain kondisi tersebut, maka akan tercetak kalimat String “Dewasa”',
+        id: 'C1L2',
+        question: 'Cetak tipe data Number yang berisi angka 404',
         test_case: [
           {
-            output: 'anak-anak',
-            input: '10',
-          },
-          {
-            output: 'remaja',
-            input: '15',
-          },
-          {
-            output: 'dewasa',
-            input: '30',
+            output: '404',
           },
         ],
-        expected_output: 'Anak-anak',
-        expected_statement: 'IfStatement',
+        title: 'Tipe Data Number',
+      },
+      {
+        id: 'C2L3',
+        title: 'Tipe Data Booelan',
+        test_case: [
+          {
+            output: 'true',
+          },
+        ],
+        question: 'Berikan contoh tipe data Number yang berisi kondisi True',
       },
     ],
+    title: 'Variabel',
+    desc: 'Pada saat membuat program, seringkali, kita ingin menyimpan nilai-nilai untuk dapat digunakan kembali. Di dalam pemrograman, variabel digunakan untuk menyimpan nilai-nilai. Selain menyimpan nilai, sebuah variabel juga harus memiliki nama sehingga dapat dibedakan dengan variabel lainnya. Nama variabel haruslah mudah untuk dikenali.',
+    index: '3',
+    modules: {
+      video: '',
+      contents: [
+        {
+          body: 'Block teks (biasa disebut string) dapat kita gunakan untuk menuliskan teks yang diinginkan. Perlu diingat bahwa semua hal yang diisikan ke blok ini akan dianggap sebuah teks. Contohnya ketika mengisinya dengan angka, angka tersebut akan tetap dianggap sebagai teks.',
+          image: ['m2/p1', 'm2/p2'],
+          title: 'Teks',
+        },
+        {
+          image: ['m2/p3', 'm2/p4'],
+          title: 'Angka',
+          body: 'Block Angka dapat digunakan untuk mengisi bilangan bulat ataupun bilangan desimal. Angka desimal ditandai dengan tanda titik, bukan tanda koma.',
+        },
+        {
+          image: ['m2/p5', 'm2/p6'],
+          title: 'Boolean',
+          body: 'Block boolean dapat digunakan untuk menandai suatu kondisi True (benar) dan juga False (salah).',
+        },
+      ],
+      desc: 'Pada saat membuat program, seringkali, kita ingin menyimpan nilai-nilai untuk dapat digunakan kembali. Di dalam pemrograman, variabel digunakan untuk menyimpan nilai-nilai. Selain menyimpan nilai, sebuah variabel juga harus memiliki nama sehingga dapat dibedakan dengan variabel lainnya. Nama variabel haruslah mudah untuk dikenali. Untuk memudahkan pemahaman, anggap variabel sebagai sebuah box yang bisa di isi berbagai jenis barang. Untuk mempermudah mengetahui apa isi barang dari box tersebut, kita perlu menuliskan label keterangan yang memudahkan kita memahami isi dari box tersebut. Box tersebut dapat menyimpan data dengan tipe tertentu. Tipe-tipe data yang telah kita pelajari di chapter sebelumnya lah yang bisa kita simpan dalam box tersebut.',
+      opening: 'Ayo kita lihat contoh penerapan variabel pada Codingin:',
+      id: 'm3',
+      ending:
+        'Sekarang pahamkan variabel itu apa? Ayo kita kerjakan tantangan yang ada pada chapter ini!',
+    },
   };
 
-  await setDoc(doc(db, 'chapters', 'c6'), docData);
+  await setDoc(doc(db, 'chapters', 'c3'), docData);
 };
 
 const findChapterById = (chapters, chapterId) => {

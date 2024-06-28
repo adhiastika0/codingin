@@ -6,12 +6,14 @@ import CustomLink from '@/components/common/button/CustomLink';
 import { useChapters } from '@/hooks/ChapterContext';
 import { getImageUrl } from '@/utils/getImageUrl';
 import variablePic from '../../../../public/chap_variable.svg';
+import { addChapter } from '@/lib/Chapter';
 
 export default function Chapter() {
   const { chapters, isLoading, error } = useChapters();
   const [imageUrls, setImageUrls] = useState({});
 
   useEffect(() => {
+    addChapter();
     const fetchImageUrls = async () => {
       const urls = {};
       for (const chapter of chapters) {
