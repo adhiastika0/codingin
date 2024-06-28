@@ -38,7 +38,7 @@ async function C5L2(userCode, testCases) {
 
         console.log = originalConsoleLog;
 
-        const expectedOutput = testCase.output;
+        const expectedOutput = testCase.output.toString().toLowerCase();
         const actualOutput = output.toString().toLowerCase();
         const success = actualOutput === expectedOutput;
 

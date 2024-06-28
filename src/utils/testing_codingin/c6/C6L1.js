@@ -39,8 +39,8 @@ async function C6L1(userCode, testCases) {
 
         console.log = originalConsoleLog;
 
-        const expectedOutput = testCase.output.trim();
-        const actualOutput = output.toString().toLowerCase();
+        const expectedOutput = testCase.output.toString().toLowerCase();
+        const actualOutput = output.toString().toLowerCase().trim();
         console.log(expectedOutput, actualOutput);
         const success = actualOutput === expectedOutput;
 
