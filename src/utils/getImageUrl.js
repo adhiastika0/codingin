@@ -1,6 +1,17 @@
 import { storage } from '@/firebase/clientApp';
 import { getDownloadURL, ref } from 'firebase/storage';
 
+const getImageUrl = async (imageName) => {
+  try {
+    const imageRef = ref(storage, `chapter/cover/${imageName}.png`);
+    const url = await getDownloadURL(imageRef);
+    return url;
+  } catch (error) {
+    console.error('Error fetching image URL:', error);
+    return null;
+  }
+};
+
 const getModuleImagesUrl = async (chapter) => {
   const newImageUrls = {};
   for (const content of chapter.modules.contents) {
@@ -39,4 +50,4 @@ const getLevelImageUrl = async (level) => {
   }
 };
 
-export { getModuleImagesUrl, getLevelImageUrl };
+export { getImageUrl, getModuleImagesUrl, getLevelImageUrl };

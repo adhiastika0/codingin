@@ -15,7 +15,7 @@ function LevelSection({
   setResult,
   result,
   selectedCodeLanguage,
-  setSelectedCodeLanguage
+  setSelectedCodeLanguage,
 }) {
   const [activeButton, setActiveButton] = useState('block');
 
@@ -23,13 +23,12 @@ function LevelSection({
     setSelectedCodeLanguage(value);
   };
 
-  // console.log(imageUrl);
-
   return (
     <div className='flex flex-col gap-4 size-full pt-16 overflow-hidden'>
       <QuestionSection
         questionTitle={level.title}
         questionDescription={level.question}
+        expectedOutput={level.test_case[0].output}
       />
       <CustomDraggable>
         <div className='handle flex justify-center items-center py-1 self-stretch mb-2'>

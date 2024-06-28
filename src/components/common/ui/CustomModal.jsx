@@ -3,10 +3,6 @@ import React, { useEffect } from 'react';
 import ReactModal from 'react-modal';
 
 function CustomModal({ isOpen, closeModal, type, body }) {
-  useEffect(() => {
-    ReactModal.setAppElement('.__className_aaf875'); // Set the app element to the root div in Next.js
-  }, []);
-
   const modalTitle = {
     info: 'Info',
     success: 'Success',
@@ -18,6 +14,7 @@ function CustomModal({ isOpen, closeModal, type, body }) {
       isOpen={isOpen}
       onRequestClose={closeModal}
       className='absolute w-1/3 h-1/3 bg-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 shadow-lg rounded-lg'
+      ariaHideApp={false}
     >
       <div className='p-6'>
         <div className='flex justify-between items-center'>

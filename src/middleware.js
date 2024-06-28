@@ -15,8 +15,7 @@ export function middleware(request) {
 
 export const config = {
   matcher: [
-    '/level/:path*',
-    '/module/:path*',
+    '/:path*/level/:path*',
     '/leaderboard/:path*',
     '/hadiah-harian/:path*',
     '/misi-mingguan/:path*',

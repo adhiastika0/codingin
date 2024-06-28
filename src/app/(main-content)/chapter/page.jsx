@@ -1,12 +1,29 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import CustomLink from '@/components/common/button/CustomLink';
 import { useChapters } from '@/hooks/ChapterContext';
+import { getImageUrl } from '@/utils/getImageUrl';
+import variablePic from '../../../../public/chap_variable.svg';
 
 export default function Chapter() {
   const { chapters, isLoading, error } = useChapters();
+  const [imageUrls, setImageUrls] = useState({});
+
+  useEffect(() => {
+    const fetchImageUrls = async () => {
+      const urls = {};
+      for (const chapter of chapters) {
+        if (chapter.cover) {
+          const url = await getImageUrl(chapter.cover);
+          urls[chapter.id] = url;
+        }
+      }
+      setImageUrls(urls);
+    };
+    fetchImageUrls();
+  }, [chapters]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -26,10 +43,11 @@ export default function Chapter() {
           className='border border-darkgray shadow-card rounded-lg flex flex-col gap-4'
         >
           <Image
-            src={'/chap_variable.svg'}
-            alt='chapter "variable" for learn how to use variable in programming'
+            src={imageUrls[chapter.id] || variablePic}
+            alt={`chapter ${index + 1} cover`}
             width={313}
             height={167}
+            priority
             className='rounded-lg w-auto h-auto'
           />
           <div className='flex flex-col gap-4 p-4 border-t border-darkgray '>

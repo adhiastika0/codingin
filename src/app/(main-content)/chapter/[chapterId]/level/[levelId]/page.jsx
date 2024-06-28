@@ -35,7 +35,7 @@ function Level({ params }) {
   const { chapters, isLoading, error } = useChapters();
   const [generatedCode, setGeneratedCode] = useState('');
   const [result, setResult] = useState('');
-  const currentGeneratedCode = useRef('');  
+  const currentGeneratedCode = useRef('');
   const [user, setUser] = useState(null);
   const [checkCode, setCheckCode] = useState(null);
   const [bodyModal, setBodyModal] = useState('');
@@ -66,7 +66,6 @@ function Level({ params }) {
   }, [chapterId, levelId]);
 
   const handleRecommendedQuestion = (question) => {
-    console.log(question);
     append({ role: 'user', content: question });
   };
 
@@ -144,29 +143,28 @@ ${generatedCode[0]}
     return <div>Error: {error}</div>;
   }
 
-  console.log(generatedCode);
   return (
-    <div className="relative flex flex-col bg-white max-h-full h-full gap-6">
+    <div className='relative flex flex-col bg-white max-h-full h-full gap-6'>
       <Modal isVisible={showLensaDeveloper}>
-        <div className="flex flex-col h-dvh">
-          <div className="flex p-4 justify-between items-center border-b border-lightgray">
-            <div className="flex items-center gap-4">
-              <div className="inline-flex p-2 items-center rounded-md border border-darkgray ">
+        <div className='flex flex-col h-dvh'>
+          <div className='flex p-4 justify-between items-center border-b border-lightgray'>
+            <div className='flex items-center gap-4'>
+              <div className='inline-flex p-2 items-center rounded-md border border-darkgray '>
                 <Image
-                  src="/lens.png"
+                  src='/lens.png'
                   width={18}
                   height={18}
-                  alt="Lensa Developer"
+                  alt='Lensa Developer'
                 />
               </div>
-              <p className="text-base font-bold">Lensa Developer</p>
+              <p className='text-base font-bold'>Lensa Developer</p>
             </div>
             <button onClick={() => setShowLensaDeveloper(false)}>
-              <Image src="/cross.svg" width={18} height={18} alt="Cross" />
+              <Image src='/cross.svg' width={18} height={18} alt='Cross' />
             </button>
           </div>
           <div
-            className="flex-grow overflow-auto p-4"
+            className='flex-grow overflow-auto p-4'
             ref={messageContainerRef}
           >
             {messages.map((m) => (
@@ -180,7 +178,7 @@ ${generatedCode[0]}
           </div>
           <form
             onSubmit={handleSubmit}
-            className="flex items-end w-full justify-between bottom-0 p-4 gap-2 border-t border-lightgray"
+            className='flex items-end w-full justify-between bottom-0 p-4 gap-2 border-t border-lightgray'
             ref={formRef}
           >
             <AutoAdjustTextarea value={input} onChange={handleInputChange} />
@@ -188,7 +186,7 @@ ${generatedCode[0]}
               backgroundColor={'bg-gradient-blue'}
               shadowColor={'shadow-button-blue'}
             >
-              <Image src="/play.svg" width={18} height={18} alt="Cross" />
+              <Image src='/play.svg' width={18} height={18} alt='Cross' />
             </CustomButton>
           </form>
         </div>
