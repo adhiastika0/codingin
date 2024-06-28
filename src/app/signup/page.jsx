@@ -120,10 +120,9 @@ export default function Signup() {
     try {
       setError('');
       const result = await signInWithPopup(auth, provider);
-      // Authentication successful, proceed with operations like redirect or displaying success message
+
       const user = result.user;
 
-      // Check if the user's email already exists in Firestore
       const q = query(
         collection(db, 'users'),
         where('email', '==', user.email)
